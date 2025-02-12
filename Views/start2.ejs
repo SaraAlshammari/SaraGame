@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Setup</title>
+  <style>
+    /* Basic styling */
+     /* Basic styling */
+     body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('public/img/4.png'); /* Background image for the entire page */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll; /* Enable vertical scrolling */
+  background-attachment: fixed; /* Keeps the background image fixed while scrolling */
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between left (logo) and center (menu) */
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent; /* Fully transparent background */
+  z-index: 100;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 18px;
+  padding: 15px 30px;
+  margin: 0 15px;
+  color: black;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #efb7ce; /* Change text color to pink on hover */
+}
+
+/* Logo and Website Name on the Left */
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* Align logo and name to the far left */
+}
+
+.logo {
+  height: 50px; /* Adjust the size of the logo */
+  margin-right: 5px; /* Space between logo and text */
+}
+
+.website-name {
+  font-size: 30px; /* Adjust font size */
+  font-weight: bold; /* Make it bold */
+  color: #18375d; /* Blue color for the website name */
+  direction: rtl; /* Proper rendering for Arabic text */
+}
+
+/* Center the Navigation Links */
+.nav-links {
+  display: flex;
+  justify-content: center; /* Align links in the center */
+  flex-grow: 1; /* Ensure they take up remaining space */
+}
+
+.team-setup {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin-top: 80px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+/* Labels */
+.team-name-label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #555;
+  text-align: right;
+}
+
+/* Input Fields */
+.team-name-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: right;
+  box-sizing: border-box;
+}
+
+.team-name-input::placeholder {
+  color: #999;
+}
+
+/* Players Control */
+.players-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.players-input {
+  width: 50px;
+  padding: 10px;
+  margin: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #fff;
+  color: #333;
+}
+
+.btn-player {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #629fe0;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-player:hover {
+  background-color: #0056b3;
+}
+
+/* Proceed Button */
+.btn-proceed {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #74b683;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-proceed:hover {
+  background-color: #218838;
+}
+    /* About Us section */
+    #aboutus {
+  padding: 3px; /* Reduced padding for smaller height */
+  background-color: #f4f4f4; /* Light background color */
+  color: #333; /* Dark text for visibility */
+  text-align: center; /* Center align text */
+  margin-top: auto;
+  width: 100%;
+  max-width: 1200px; /* Max width for content */
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50% 50% 0 0; /* Top half circle effect */
+  position: relative;
+  overflow: hidden; /* Hide overflow for clean edges */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
+}
+
+#aboutus h2 {
+  font-size: 22px; /* Smaller heading font size */
+  color: #18375d; /* Color for headings */
+  margin-bottom: 10px; /* Reduced spacing */
+}
+
+#aboutus p {
+  font-size: 14px; /* Smaller font size for paragraphs */
+  line-height: 1.4; /* Reduced line height */
+  margin-bottom: 8px; /* Reduced spacing between paragraphs */
+}
+
+#aboutus a {
+  color: #18375d; /* Dark blue color for email link */
+  text-decoration: none;
+}
+
+#aboutus a:hover {
+  text-decoration: underline; /* Hover effect for the email link */
+}
+/* Base Button Styles */
+
+
+
+
+/* Secondary Button (Light Green) */
+.button-secondary {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  color: #333; /* Dark text for contrast */
+  background-color: #c7e287; /* Light green */
+}
+
+.button-secondary:hover {
+  background-color: #a5ce69; /* Slightly darker shade */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Proceed Button */
+#proceedButton {
+  display: none;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #bdc9d8; /* Light blue-gray */
+  color: #333; /* Dark text for contrast */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#proceedButton:hover {
+  background-color: #a8b6c7; /* Slightly darker shade */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+  </style>
+</head>
+<body>
+
+ <!-- Transparent Navigation Menu -->
+ <div class="navbar">
+  <!-- Logo and Website Name -->
+  <div class="logo-container">
+    <img src="public/img/logo.png" alt="Logo" class="logo">
+    <span class="website-name">حلّها!</span>
+  </div>
+
+  <!-- Center Navigation Links -->
+  <div class="nav-links">
+    <a href="/">الصفحة الرئيسيه</a>
+    <a href="/Startgame">ألعب </a>
+    <a href="/ourgames">جديدنا</a>
+    <a href="#aboutus">عني</a>
+  </div>
+</div>
+
+  <!-- Spacer -->
+  <div class="spacer"></div>
+  
+  <ul id="categoriesList"></ul>
+  <script>
+    // Retrieve selected categories from localStorage
+    const selectedCategories = JSON.parse(localStorage.getItem('selectedCategories')) || [];
+
+    // Display the categories as a comma-separated string
+    const container = document.getElementById('categoriesList');
+    container.textContent = selectedCategories.join(', ');
+    container.style.color = 'white'; // Set the text color to white
+</script>
+
+  <!-- Team Setup Form -->
+  <div class="team-setup">
+    <h2>إعداد الفريق</h2>
+  
+    <!-- Team 1 Name -->
+    <label for="team1-name" class="team-name-label">اسم الفريق الأول</label>
+    <input type="text" id="team1-name" class="team-name-input" placeholder="أدخل اسم الفريق الأول">
+  
+    <!-- Team 2 Name -->
+    <label for="team2-name" class="team-name-label">اسم الفريق الثاني</label>
+    <input type="text" id="team2-name" class="team-name-input" placeholder="أدخل اسم الفريق الثاني">
+  
+    <!-- Number of Players for Team 1 -->
+    <label for="team1-players" class="team-name-label">عدد اللاعبين في الفريق الأول</label>
+    <div class="players-control">
+      <button class="btn-player" onclick="changePlayers('team1', -1)">-</button>
+      <input type="text" id="team1-players" class="players-input" value="1" readonly>
+      <button class="btn-player" onclick="changePlayers('team1', 1)">+</button>
+    </div>
+  
+    <!-- Number of Players for Team 2 -->
+    <label for="team2-players" class="team-name-label">عدد اللاعبين في الفريق الثاني</label>
+    <div class="players-control">
+      <button class="btn-player" onclick="changePlayers('team2', -1)">-</button>
+      <input type="text" id="team2-players" class="players-input" value="1" readonly>
+      <button class="btn-player" onclick="changePlayers('team2', 1)">+</button>
+    </div>
+  
+    <button onclick="proceed()" class="button-secondary">متابعة</button>
+  </div>
+  <script>
+    function proceed() {
+        // Get team names
+        const team1Name = document.getElementById('team1-name').value;
+        const team2Name = document.getElementById('team2-name').value;
+       
+        // Get selected categories
+        const selectedCategories = JSON.parse(localStorage.getItem('selectedCategories')) || [];
+        const categoriesString = selectedCategories.join(',');
+
+        // Validate that team names are filled
+        if (!team1Name || !team2Name) {
+            alert('الرجاء ادخال اسم لكل من الفرق');
+            return;
+        }
+       //alert(categoriesString);
+        // Clear scores from sessionStorage
+    sessionStorage.removeItem('score1');
+    sessionStorage.removeItem('score2');
+
+    // Clear disabled levels from localStorage
+    localStorage.removeItem('selectedLevels');
+
+        // Build URL with parameters
+        const nextPageUrl = `/start3?team1=${encodeURIComponent(team1Name)}&team2=${encodeURIComponent(team2Name)}&categories=${encodeURIComponent(categoriesString)}`;
+        
+        // Navigate to the next page
+        window.location.href = nextPageUrl;
+    }
+</script>
+   <!-- Spacer -->
+  <div class="spacer"></div>
+  <!-- About Us Section -->
+  <div id="aboutus">
+    <h2>About Me</h2>
+    <p>I am a passionate developer who enjoys building websites and loves gaming.</p>
+    <p>My name is Sara Alshammari, and I'm the sole developer working on this website.</p>
+    <p>Email: <a href="mailto:Sara_alshmmari2@outlook.com">Sara_alshmmari2@outlook.com</a></p>
+  </div>
+
+  <script>
+    // Function to handle the increase/decrease of players
+    function changePlayers(team, change) {
+      var playerInput = document.getElementById(team + '-players');
+      var currentPlayers = parseInt(playerInput.value);
+      var newPlayers = currentPlayers + change;
+
+      if (newPlayers >= 1 && newPlayers <= 6) { // Allow number between 1 and 6
+        playerInput.value = newPlayers;
+      }
+    }
+
+    
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Question</title>
+  <style>
+   /* Prevent scrolling on the entire page */
+   body, html {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden; /* Prevent scrolling */
+      background-image: url('public/img/6.png'); /* Background image for the entire page */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat; /* Make the background stay in place when scrolling */
+    }
+ /* Navbar Styling */
+ .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent; /* Fully transparent */
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* Logo and Website Name */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 80px;
+  height: 70px;
+}
+
+.website-name {
+  font-size: 29px;
+  font-weight: bold;
+  color: #000; /* Black text */
+}
+
+/* Exit Game Button */
+.exit-game {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.exit-game:hover {
+  opacity: 0.8;
+}
+
+.exit-text {
+  font-size: 22px;
+  color: #000; /* Black text */
+}
+
+.exit-game a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit text color */
+  display: flex; /* Ensure flex layout works */
+  align-items: center; /* Align items vertically */
+  gap: 8px; /* Add spacing between text and icon */
+}
+.exit-icon {
+  width: 40px;
+  height: 40px;
+}
+
+    .main-container {
+      display: flex;
+      flex-direction: row;
+      margin-top: 60px;
+      width: 100%;
+
+      padding: 20px;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+    }
+
+    .question-card {
+      background-color: rgba(255, 255, 255, 0.959);
+      /* Semi-transparent white background */
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .question {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .next-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      width: 20%;
+  font-size: 25px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  color: #ffffff; /* Dark text for contrast */
+  background-color: #86a4c9; 
+    }
+
+    .next-btn:hover {
+      background-color: #5c83b3; /* Slightly darker shade */
+  transform: scale(1.05);
+    }
+
+    .team-name-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 300px;
+      margin-left: 35px;
+    }
+
+    .team-box {
+      width: 100%;
+      background-color: #4e62b9;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .team-box.active {
+      background-color: #c4e17f;
+      /* Highlight color */
+      transform: scale(1.05);
+    }
+
+    .team-name {
+      font-size: 22px;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    #answer-container img,
+    #answer-container video {
+      width: 100%;
+      max-height: 300px;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+
+    .team-name-text {
+      font-size: 1.5em;
+      color: #00796b;
+    }
+
+    #team1Points,
+    #team2Points {
+      font-size: 1.4em;
+      color: #d32f2f;
+    }
+
+    .active {
+      background-color: #ffe082;
+      border-color: #ffca28;
+    }
+    #note-text {
+    font-size: 16px;
+    color: #333;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-family: Arial, sans-serif;
+  }
+  </style>
+</head>
+
+<body>
+
+   <!-- Top Menu -->
+
+   <div class="navbar">
+    <!-- Logo and Website Name -->
+    <div class="logo-container">
+      <img src="public/img/logo.png" alt="Logo" class="logo">
+      <span class="website-name">حلّها!</span>
+    </div>
+  
+    <!-- Exit Game Button -->
+    <div class="exit-game">
+      <a href="/" onclick="endGame()">
+        <span class="exit-text">إنهاء اللعبة</span>
+        <img src="public/img/left.png" alt="Exit Icon" class="exit-icon">
+      </a>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="question-card">
+      <div class="question">
+        <h2 id="answer-container" style="color: #333;"></h2>
+        <img src="" alt="answerImage" id="answer-image" style="width: 100%; height: 300px; display: none;">
+        <video id="answer-video" controls style="width: 100%; height: 380px; display: none;">
+          <source src="" id="video-source" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <!-- Audio -->
+      <audio  id="answer-audio" controls style="display: none;">
+        <source src="" id="audio-source" type="audio/mp3">
+        Your browser does not support the audio tag.
+      </audio>
+      </div>
+      <button class="next-btn" onclick="nextQuestion()">التالي</button>
+      <p id="note-text">ملاحظة: اضغط على الفريق في الجهة اليمنى الذي أجاب، أو فقط اضغط على التالي إذا لم يجب أي فريق.</p>
+
+    </div>
+     
+    <div class="team-name-container">
+      <!-- Team 1 -->
+      <div class="team-box" id="team1Box" onclick="selectTeam('team1')">
+        <div class="team-name">
+          <span id="team1Display"></span>: <span id="score1Display">0</span>
+        </div>
+      </div>
+
+      <!-- Team 2 -->
+      <div class="team-box" id="team2Box" onclick="selectTeam('team2')">
+        <div class="team-name">
+          <span id="team2Display"></span>: <span id="score2Display">0</span>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+      let selectedTeam = null;
+      let team1Name;
+      let team2Name;
+      let score1 = 0;
+      let score2 = 0;
+      let level;
+      let category;
+
+      // Get Team 1 Name and Team 2 Name
+      team1Name = new URLSearchParams(window.location.search).get('team1') || "Team 1: Not found";
+      team2Name = new URLSearchParams(window.location.search).get('team2') || "Team 2: Not found";
+
+      const queryParams = new URLSearchParams(window.location.search);
+      const key = queryParams.get('key');
+
+      // Display team names on the page
+      document.getElementById('team1Display').textContent = team1Name;
+      document.getElementById('team2Display').textContent = team2Name;
+
+      score1 = parseInt(new URLSearchParams(window.location.search).get('score1')) || parseInt(sessionStorage.getItem('score1')) || 0;
+      score2 = parseInt(new URLSearchParams(window.location.search).get('score2')) || parseInt(sessionStorage.getItem('score2')) || 0;
+      // Display scores (optional, to show on the page)
+      document.getElementById('score1Display').textContent = ` ${score1}`;
+      document.getElementById('score2Display').textContent = `${score2}`;
+
+
+      // Extract query parameters from URL
+      const params = new URLSearchParams(window.location.search);
+      const questionText = params.get('questionText') || 'Default Question';
+      const answerText = params.get('answerText') || '';
+      const answerImage = params.get('answerImage') || '';
+      const questionImage = params.get('questionImage') || '';
+      level = params.get('level');
+      category = params.get('category');
+
+      // Populate question text
+      document.getElementById('answer-container').textContent = answerText;
+      // Handle the image or video
+      if (answerImage && answerImage !== "no") {
+    if (/\.(jpg|jpeg|png)$/i.test(answerImage)) {
+        // It's an image
+        document.getElementById('answer-image').src = `public/img/${answerImage}`;
+        document.getElementById('answer-image').style.display = "block";
+        document.getElementById('answer-video').style.display = "none"; // Hide video
+        document.getElementById('answer-audio').style.display = "none"; // Hide audio
+    } else if (/\.mp4$/i.test(answerImage)) {
+        // It's a video
+        document.getElementById('video-source').src = `public/img/${answerImage}`;
+        document.getElementById('answer-video').style.display = "block";
+        document.getElementById('answer-image').style.display = "none"; // Hide image
+        document.getElementById('answer-audio').style.display = "none"; // Hide audio
+    } else if (/\.mp3$/i.test(answerImage)) {
+        // It's an audio file
+        document.getElementById('audio-source').src = `public/img/${answerImage}`;
+        document.getElementById('answer-audio').style.display = "block";
+        document.getElementById('answer-image').style.display = "none"; // Hide image
+        document.getElementById('answer-video').style.display = "none"; // Hide video
+    }
+} else {
+    // Hide all if no valid image, video, or audio
+    document.getElementById('answer-image').style.display = "none";
+    document.getElementById('answer-video').style.display = "none";
+    document.getElementById('answer-audio').style.display = "none";
+}
+
+
+
+
+
+      // Function to handle team selection
+      // Function to select a team
+      function selectTeam(teamId) {
+        const teamBox = document.getElementById(teamId + "Box");
+        const params = new URLSearchParams(window.location.search);
+
+        //let level = params.get('level');
+        level = level ? Number(level) : 0;
+
+        // Check if the same team is clicked again, and if so, deselect it
+        if (selectedTeam === teamId) {
+          teamBox.classList.remove("active");
+          selectedTeam = null;
+        } else {
+          // Remove "active" class from the previously selected team (if any)
+          if (selectedTeam) {
+            document.getElementById(selectedTeam + "Box").classList.remove("active");
+          }
+
+          // Add "active" class to the newly selected team
+          teamBox.classList.add("active");
+          selectedTeam = teamId;
+        }
+      }
+      // Function to update the score for the selected team
+      function updateScore(teamId, pointsToAdd) {
+
+        if (selectedTeam === teamId) {
+          let teamPoints = document.getElementById(teamId + "Points");
+          let currentPoints = parseInt(teamPoints.innerText);
+          currentPoints += pointsToAdd;
+          teamPoints.innerText = currentPoints;
+
+          // Store the updated score in sessionStorage and pass it through the URL
+          if (teamId === 'team1') {
+            score1 = currentPoints;
+            sessionStorage.setItem('score1', score1);
+          } else if (teamId === 'team2') {
+            score2 = currentPoints;
+            sessionStorage.setItem('score2', score2);
+          }
+        }
+      }
+
+      function nextQuestion() {
+        // Retrieve the 'level' from the URL parameters
+        const params = new URLSearchParams(window.location.search);
+        level = params.get('level');
+
+        // Convert level to an integer (parseInt will remove leading zeros)
+        level = parseInt(level, 10) || 0;  // Default to 0 if level is not a valid number
+
+        // Parse score1 and score2 as integers (if not already)
+        score1 = parseInt(score1, 10) || 0;  // If score1 is a string, it will be parsed to number
+        score2 = parseInt(score2, 10) || 0;  // Same for score2
+        let lvlteam1 =level;
+        let lvlteam2 = level;
+
+
+        const key1 = localStorage.getItem('key1');
+        const key2 = localStorage.getItem('key2');
+        if (key1) {
+          const [K1team, K1category, K1level] = key1.split('_');
+          if(K1category == category && K1level == level){
+            lvlteam1 = 2* lvlteam1;
+          }
+        } 
+        if (key2) {
+          const [K2team, K2category, K2level] = key2.split('_');
+          if(K2category == category && K2level == level){
+            lvlteam2 = 2* lvlteam2;
+          } // Outputs values from key2
+        }
+
+
+
+        // If a team is selected, add the level to the respective score
+        if (selectedTeam === 'team1') {
+          score1 += lvlteam1;
+        } else if (selectedTeam === 'team2') {
+          score2 += lvlteam2;
+        }
+
+        //const currentKey = `${category}_${level}`;
+
+
+
+
+        // Check if the stored key exists
+
+
+
+
+
+
+        //checkBeforeDoubled();
+        // Show the updated scores in an alert
+        //alert(`Next Question: Team 1 Score = ${score1}, Team 2 Score = ${score2}`);
+
+        const selectedCategories = JSON.parse(localStorage.getItem('selectedCategories')) || [];
+        const categoriesString = selectedCategories.join(',');
+        // alert(categoriesString);
+        //alert(score1);
+        const nextPageUrl = `/start3?score1=${encodeURIComponent(score1)}&score2=${encodeURIComponent(score2)}&team1=${encodeURIComponent(team1Name)}&team2=${encodeURIComponent(team2Name)}&level=${encodeURIComponent(level)}&categories=${encodeURIComponent(categoriesString)}`;
+
+        // Redirect to the new page
+        window.location.href = nextPageUrl;
+      }
+
+      function endGame() {
+         // Reset scores
+  score1 = 0;
+    score2 = 0;
+ // Clear the localStorage entries for both teams
+ localStorage.removeItem('team1_usedX2');
+  localStorage.removeItem('team2_usedX2');
+  localStorage.removeItem('key1');
+  localStorage.removeItem('key2');
+  // Reset icons to their default state
+  resetIconState(1);
+  resetIconState(2);
+    
+
+    // Clear session storage for scores
+    sessionStorage.removeItem('score1');
+    sessionStorage.removeItem('score2');
+
+    // Reset the displayed scores
+    document.getElementById('score1Display').textContent = score1;
+    document.getElementById('score2Display').textContent = score2;
+
+    // Reset team names
+    document.getElementById('team1Display').textContent = "Team 1: Not found";
+    document.getElementById('team2Display').textContent = "Team 2: Not found";
+
+    // Reset category images
+    document.getElementById('category1-name').src = '';
+    document.getElementById('category2-name').src = '';
+    document.getElementById('category3-name').src = '';
+    document.getElementById('category4-name').src = '';
+    document.getElementById('category5-name').src = '';
+    document.getElementById('category6-name').src = '';
+
+    // Reset categories
+    category1 = category2 = category3 = category4 = category5 = category6 = '';
+      }
+
+
+    </script>
+
+</body>
+
+</html>

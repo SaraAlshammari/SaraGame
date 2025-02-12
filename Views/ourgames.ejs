@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Games</title>
+  <style>
+    /* Basic styling */
+    body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('public/img/4.png'); /* Background image for the entire page */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll; /* Enable vertical scrolling */
+  background-attachment: fixed; /* Keeps the background image fixed while scrolling */
+}
+
+    /* Navigation menu */
+    .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between left (logo) and center (menu) */
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent; /* Fully transparent background */
+  z-index: 100;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 18px;
+  padding: 15px 30px;
+  margin: 0 15px;
+  color: black;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #efb7ce; /* Change text color to pink on hover */
+}
+
+/* Logo and Website Name on the Left */
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* Align logo and name to the far left */
+}
+
+.logo {
+  height: 50px; /* Adjust the size of the logo */
+  margin-right: 5px; /* Space between logo and text */
+}
+
+.website-name {
+  font-size: 30px; /* Adjust font size */
+  font-weight: bold; /* Make it bold */
+  color: #18375d; /* Blue color for the website name */
+  direction: rtl; /* Proper rendering for Arabic text */
+}
+
+/* Center the Navigation Links */
+.nav-links {
+  display: flex;
+  justify-content: center; /* Align links in the center */
+  flex-grow: 1; /* Ensure they take up remaining space */
+}
+
+    /* Centered text for main section */
+    .soon-message {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 100px); /* Adjusted to leave space for the navbar */
+      color: rgb(15, 15, 70);
+      text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+      font-size: 64px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* About Us section */
+    #aboutus {
+  padding: 3px; /* Reduced padding for smaller height */
+  background-color: #f4f4f4; /* Light background color */
+  color: #333; /* Dark text for visibility */
+  text-align: center; /* Center align text */
+  margin-top: auto;
+  width: 100%;
+  max-width: 1200px; /* Max width for content */
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50% 50% 0 0; /* Top half circle effect */
+  position: relative;
+  overflow: hidden; /* Hide overflow for clean edges */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
+}
+
+#aboutus h2 {
+  font-size: 22px; /* Smaller heading font size */
+  color: #18375d; /* Color for headings */
+  margin-bottom: 10px; /* Reduced spacing */
+}
+
+#aboutus p {
+  font-size: 14px; /* Smaller font size for paragraphs */
+  line-height: 1.4; /* Reduced line height */
+  margin-bottom: 8px; /* Reduced spacing between paragraphs */
+}
+
+#aboutus a {
+  color: #18375d; /* Dark blue color for email link */
+  text-decoration: none;
+}
+
+#aboutus a:hover {
+  text-decoration: underline; /* Hover effect for the email link */
+}
+  </style>
+</head>
+<body>
+  <!-- Navigation Menu -->
+  <div class="navbar">
+    <!-- Logo and Website Name -->
+    <div class="logo-container">
+      <img src="public/img/logo.png" alt="Logo" class="logo">
+      <span class="website-name">حلّها!</span>
+    </div>
+  
+    <!-- Center Navigation Links -->
+    <div class="nav-links">
+      <a href="/">الصفحة الرئيسيه</a>
+      <a href="/Startgame">ألعب </a>
+      <a href="/ourgames">جديدنا</a>
+      <a href="#aboutus">عني</a>
+    </div>
+  </div>
+
+  <!-- Centered "SOON" Message -->
+  <div class="soon-message">
+    "برا السالفة"   
+    SOON
+  </div>
+
+  <!-- About Us Section -->
+  <!-- About Us Section -->
+  <div id="aboutus">
+    <h2>About Me</h2>
+    <p>I am a passionate developer who enjoys building websites and loves gaming.</p>
+    <p>My name is Sara Alshammari, and I'm the sole developer working on this website.</p>
+    <p>Email: <a href="mailto:Sara_alshmmari2@outlook.com">Sara_alshmmari2@outlook.com</a></p>
+  </div>
+</body>
+</html>

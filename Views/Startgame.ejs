@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Game</title>
+  <style>
+    /* Basic styling */
+    body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('public/img/4.png'); /* Background image for the entire page */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll; /* Enable vertical scrolling */
+  background-attachment: fixed; /* Keeps the background image fixed while scrolling */
+}
+
+    /* Transparent Navigation menu */
+    .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between left (logo) and center (menu) */
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent; /* Fully transparent background */
+  z-index: 100;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 18px;
+  padding: 15px 30px;
+  margin: 0 15px;
+  color: black;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #efb7ce; /* Change text color to pink on hover */
+}
+
+/* Logo and Website Name on the Left */
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* Align logo and name to the far left */
+}
+
+.logo {
+  height: 50px; /* Adjust the size of the logo */
+  margin-right: 5px; /* Space between logo and text */
+}
+
+.website-name {
+  font-size: 30px; /* Adjust font size */
+  font-weight: bold; /* Make it bold */
+  color: #18375d; /* Blue color for the website name */
+  direction: rtl; /* Proper rendering for Arabic text */
+}
+
+/* Center the Navigation Links */
+.nav-links {
+  display: flex;
+  justify-content: center; /* Align links in the center */
+  flex-grow: 1; /* Ensure they take up remaining space */
+}
+    /* Spacer */
+    .spacer {
+      height: 100px;
+    }
+
+    /* Pink Text after Menu */
+    .pink-text {
+  background-color: #18375d; /* Dark blue background */
+  color: #f4f4f4; /* Light text for contrast */
+  font-size: 18px; /* Font size for readability */
+  font-weight: bold; /* Make text bold */
+  padding: 15px 25px; /* Add padding around the text */
+  border-radius: 10px; /* Rounded corners for the text block */
+  text-align: center; /* Center the text */
+  max-width: 600px; /* Limit the width for a cleaner look */
+  margin: 20px auto; /* Center the text box horizontally */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Game-style shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation effects for hover */
+}
+
+.pink-text:hover {
+  transform: translateY(-5px); /* Slightly move up on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+}
+
+.pink-text a {
+  color: #efb7ce; /* Pink color for links (if any) */
+  text-decoration: none;
+}
+
+.pink-text a:hover {
+  text-decoration: underline; /* Underline effect on hover */
+}
+
+    /* Category Cards Section */
+    .categories-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px; /* Reduced gap between cards */
+      margin-top: 30px;
+      width: 100%;
+      max-width: 1200px; /* Maximum width for better control */
+    }
+
+    .category-card {
+      background: rgba(255, 255, 255, 0.3);
+      width: 28%; /* Smaller card width for a more compact design */
+      height: 270px; /* Reduced card height */
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .category-card:hover {
+      transform: scale(1.05);
+    }
+
+    .category-card.selected {
+      background-color: #efb7ce; /* Highlight color when selected */
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 80%; /* Adjust image height for a smaller card */
+      border-radius: 15px 15px 0 0;
+      object-fit: cover;
+    }
+
+    .category-card-name {
+      padding: 5px; /* Reduced padding */
+      font-size: 16px; /* Smaller text size */
+      font-weight: bold;
+      color: rgb(7, 7, 63);
+    }
+
+    /* About Us section */
+    #aboutus {
+  padding: 3px; /* Reduced padding for smaller height */
+  background-color: #f4f4f4; /* Light background color */
+  color: #333; /* Dark text for visibility */
+  text-align: center; /* Center align text */
+  margin-top: auto;
+  width: 100%;
+  max-width: 1200px; /* Max width for content */
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50% 50% 0 0; /* Top half circle effect */
+  position: relative;
+  overflow: hidden; /* Hide overflow for clean edges */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
+}
+
+#aboutus h2 {
+  font-size: 22px; /* Smaller heading font size */
+  color: #18375d; /* Color for headings */
+  margin-bottom: 10px; /* Reduced spacing */
+}
+
+#aboutus p {
+  font-size: 14px; /* Smaller font size for paragraphs */
+  line-height: 1.4; /* Reduced line height */
+  margin-bottom: 8px; /* Reduced spacing between paragraphs */
+}
+
+#aboutus a {
+  color: #18375d; /* Dark blue color for email link */
+  text-decoration: none;
+}
+
+#aboutus a:hover {
+  text-decoration: underline; /* Hover effect for the email link */
+}
+    /* Proceed Button */
+    /* Base Button Styles */
+    button {
+      padding: 15px 30px; /* Larger padding for bigger buttons */
+  font-size: 27px; /* Bigger font size */
+  font-weight: bold; /* Bold text */
+  border: none;
+  border-radius: 15px; /* Higher rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  color: white; /* White text */
+  text-transform: uppercase; /* Uppercase text for a bold look */
+}
+
+/* Primary Button (Light Blue-Gray) */
+.button-primary {
+  
+  background-color: #70a1b9; /* Light blue-gray */
+}
+
+.button-primary:hover {
+  background-color: #809bbd; /* Slightly darker shade */
+  transform: translateY(-2px); /* Lift effect on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Secondary Button (Light Green) */
+.button-secondary {
+  background-color: #cfe0a6; /* Light green */
+}
+
+.button-secondary:hover {
+  background-color: #b5d683; /* Slightly darker shade */
+  transform: translateY(-2px); /* Lift effect on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+#proceedButton {
+      display: none;
+      margin-bottom: 30px;
+    }
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Transparent Navigation Menu -->
+  <div class="navbar">
+    <!-- Logo and Website Name -->
+    <div class="logo-container">
+      <img src="public/img/logo.png" alt="Logo" class="logo">
+      <span class="website-name">حلّها!</span>
+    </div>
+  
+    <!-- Center Navigation Links -->
+    <div class="nav-links">
+      <a href="/">الصفحة الرئيسيه</a>
+      <a href="/Startgame">ألعب </a>
+      <a href="/ourgames">جديدنا</a>
+      <a href="#aboutus">عني</a>
+    </div>
+  </div>
+
+  <!-- Spacer -->
+  <div class="spacer"></div>
+<!-- Spacer -->
+<div class="spacer"></div>
+  <!-- Pink Text after Menu -->
+  <div class="pink-text">
+    لكي تبدأ اللعبة، اختر ست فئات تفضل طرح الأسئلة عنها.
+  </div>
+
+  <!-- Category Cards -->
+  <div class="categories-container">
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/اسئله دينية.jpg" alt="اسئله دينية">
+      <div class="category-card-name">اسئله دينية</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/كورة.jpg" alt="كورة">
+      <div class="category-card-name">كورة</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/السعودية.jpg" alt="السعودية">
+      <div class="category-card-name">السعودية</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/videogames.jpg" alt="VideoGames">
+      <div class="category-card-name">VideoGames</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/spacetoon.jpg" alt="spacetoon">
+      <div class="category-card-name">spacetoon</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/disney.jpg" alt="disney">
+      <div class="category-card-name">Disney</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/ساوندات العاب.jpg" alt = " ساوندات العاب   ">
+      <div class="category-card-name">ساوندات العاب</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/كود8.jpg" alt = " كود8   ">
+      <div class="category-card-name">كود8</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/CallOfDuty.jpg" alt = " CallOfDuty  ">
+      <div class="category-card-name">CallOfDuty</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/كرتون.jpg" alt = "  كرتون   ">
+      <div class="category-card-name">كرتون</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/كلانات.jpg" alt = "  كلانات   ">
+      <div class="category-card-name">كلانات</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/يوتيوبرز.jpg" alt = " يوتيوبرز  ">
+      <div class="category-card-name">يوتيوبرز</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/بوسترات العاب.jpg" alt = "  بوسترات العاب   ">
+      <div class="category-card-name">بوسترات العاب</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/اغاني اجنبية.jpg" alt="اغاني أجنبيه">
+      <div class="category-card-name">اغاني اجنبية</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/اغاني عربيه.jpg" alt="اغاني عربيه">
+      <div class="category-card-name">اغاني عربيه</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/اغاني قديمة.jpg" alt = "اغاني عربية قديمة   ">
+      <div class="category-card-name"> اغاني قديمة</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/90s - 2000s Songs.jpg" alt = "  90s - 2000s Songs  ">
+      <div class="category-card-name"> 90s - 2000s Songs</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/كمل الاغنيه.jpg" alt = "  كمل الأغنية   ">
+      <div class="category-card-name">كمل الاغنيه </div> 
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/شيلات.jpg" alt = " شيلات   ">
+      <div class="category-card-name">شيلات</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/اغاني تركية.jpg" alt = " اغاني تركية  ">
+      <div class="category-card-name">اغاني تركية</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/مسلسلات تركية.jpg" alt = "مسلسلات تركية">
+      <div class="category-card-name">مسلسلات تركية</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/باب الحارة.jpg" alt = " باب الحارة">
+      <div class="category-card-name">باب الحارة</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/movies.jpg" alt="movies">
+      <div class="category-card-name">movies</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/netflix.jpg" alt = " netflix">
+      <div class="category-card-name">netflix</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/marvel.jpg" alt = " marvel">
+      <div class="category-card-name">marvel</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/افلام رعب.jpg" alt = " افلام رعب  ">
+      <div class="category-card-name">افلام رعب</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/جورج مارتن.jpg" alt = " GeorgeMartin ">
+      <div class="category-card-name">جورج مارتن</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/انمي.jpg" alt = "  انمي ">
+      <div class="category-card-name"> انمي</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/SoundTrack.jpg" alt = " SoundTrack  ">
+      <div class="category-card-name">SoundTrack</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/أمثال وحكم.jpg" alt = "أمثال وحكم ">
+      <div class="category-card-name"> أمثال وحكم</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/خَمِّن.jpg" alt = " خَمِّن">
+      <div class="category-card-name">خَمِّن</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/لغات ولهجات.jpg" alt = " لغات ولهجات   ">
+      <div class="category-card-name">لغات ولهجات</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/خمن مين.jpg" alt = "  خمن مين ">
+      <div class="category-card-name"> خمن مين</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/ألغاز.jpg" alt = "  ألغاز   ">
+      <div class="category-card-name">ألغاز</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/reactions.jpg" alt="كمل الرياكشن!">
+      <div class="category-card-name">reactions</div>
+    </div>
+    <div class="category-card" onclick="selectCategory(this)">
+      <img src="public/img/اسرع واحد.jpg" alt = " اسرح واحد  ">
+      <div class="category-card-name">اسرع واحد</div>
+    </div>
+    
+  </div>
+  <!-- Spacer -->
+  <div class="spacer"></div>
+  
+
+  <a href="/start2">
+    <button id="proceedButton" class="button-primary" onclick="saveSelectedCategories()">التالي</button>
+  </a>
+  
+  <!-- About Us Section -->
+  <div id="aboutus">
+    <h2>About Me</h2>
+    <p>I am a passionate developer who enjoys building websites and loves gaming.</p>
+    <p>My name is Sara Alshammari, and I'm the sole developer working on this website.</p>
+    <p>Email: <a href="mailto:Sara_alshmmari2@outlook.com">Sara_alshmmari2@outlook.com</a></p>
+  </div>
+  
+  <script>
+    let selectedCategories = [];
+    const maxSelection = 6;
+  
+    function selectCategory(card) {
+      const categoryName = card.querySelector('.category-card-name').innerText;
+  
+      if (card.classList.contains('selected')) {
+        // If already selected, remove selection
+        card.classList.remove('selected');
+        selectedCategories = selectedCategories.filter(category => category !== categoryName);
+      } else if (selectedCategories.length < maxSelection) {
+        // If not selected and below limit, add selection
+        card.classList.add('selected');
+        selectedCategories.push(categoryName);
+      }
+  
+      // Enable or disable the proceed button
+      const proceedButton = document.getElementById('proceedButton');
+      proceedButton.style.display = selectedCategories.length === maxSelection ? 'inline-block' : 'none';
+  
+      // Scroll to the button if 6 categories are selected
+      if (selectedCategories.length === maxSelection) {
+        proceedButton.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  
+    function saveSelectedCategories() {
+      // Save selected categories to localStorage
+      localStorage.setItem('selectedCategories', JSON.stringify(selectedCategories));
+    }
+  </script>
+</body>
+</html>

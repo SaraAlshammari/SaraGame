@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Question</title>
+  <style>
+    /* Prevent scrolling on the entire page */
+    body, html {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden; /* Prevent scrolling */
+      background-image: url('public/img/6.png'); /* Background image for the entire page */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat; /* Make the background stay in place when scrolling */
+    }
+ /* Navbar Styling */
+ .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent; /* Fully transparent */
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* Logo and Website Name */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 80px;
+  height: 70px;
+}
+
+.website-name {
+  font-size: 29px;
+  font-weight: bold;
+  color: #000; /* Black text */
+}
+
+/* Exit Game Button */
+.exit-game {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.exit-game:hover {
+  opacity: 0.8;
+}
+
+.exit-text {
+  font-size: 22px;
+  color: #000; /* Black text */
+}
+
+.exit-game a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit text color */
+  display: flex; /* Ensure flex layout works */
+  align-items: center; /* Align items vertically */
+  gap: 8px; /* Add spacing between text and icon */
+}
+.exit-icon {
+  width: 40px;
+  height: 40px;
+}
+
+    /* Main Content Section */
+    /* Main Content Section */
+/* Main Content Section */
+.main-container {
+  display: flex;
+  flex-direction: row; /* Align children side by side */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Take up the full viewport height */
+  width: 100%; /* Take up the full width */
+  gap: 20px; /* Add spacing between question card and team names */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Question Card */
+.question-card {
+  background-color: rgba(255, 255, 255, 0.959); /* Semi-transparent white background */
+  width: 60%; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Question Styling */
+.question {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Reveal Answer Button Styling */
+.reveal-answer-btn {
+  padding: 10px 20px;
+  width: 20%;
+  font-size: 25px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  color: #ffffff; /* Dark text for contrast */
+  background-color: #86a4c9;
+}
+
+.reveal-answer-btn:hover {
+  background-color: #5c83b3; /* Slightly darker shade */
+  transform: scale(1.05);
+}
+
+/* Right Column for Team Names and Icon */
+.team-name-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align to the top */
+  align-items: center;
+  width: 300px;
+  background-color: transparent; /* Make the container transparent */
+  border-radius: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* Team Box */
+.team-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for team boxes */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow to team boxes */
+  padding: 15px;
+  text-align: center;
+}
+
+
+    /* Team Name */
+    .team-name {
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    /* Double Icon */
+    .double-icon {
+      width: 40px; /* Resized icon */
+      height: 40px;
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease; /* For smooth gray effect */
+    }
+
+    /* Icon clicked (gray effect) */
+    .double-icon.clicked {
+      filter: grayscale(100%);
+      cursor: not-allowed; /* Disable further clicks */
+    }
+
+    /* Tooltip text */
+    .tooltip {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%; /* Position the tooltip above the icon */
+      left: 50%;
+      margin-left: -60px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .double-icon:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+    <!-- Top Menu -->
+
+    <div class="navbar">
+      <!-- Logo and Website Name -->
+      <div class="logo-container">
+        <img src="public/img/logo.png" alt="Logo" class="logo">
+        <span class="website-name">حلّها!</span>
+      </div>
+    
+      <!-- Exit Game Button -->
+      <div class="exit-game">
+        <a href="/" onclick="endGame()">
+          <span class="exit-text">إنهاء اللعبة</span>
+          <img src="public/img/left.png" alt="Exit Icon" class="exit-icon">
+        </a>
+      </div>
+    </div>
+
+  <!-- Main Content Area -->
+  <!-- Main Content Area -->
+<div class="main-container">
+  <!-- Question Card -->
+  <div class="question-card">
+    <div class="question">
+      <!-- Sample Question -->
+      <h2 id="question-text" style="color: #333;"></h2>
+      
+      <!-- Image -->
+      <img src="" alt="question-image" id="question-image" style="width: 100%; height: 300px; display: none;">
+      
+      <!-- Video -->
+      <video  id="question-video" controls style="width: 100%; height: 380px; display: none;">
+        <source src="" id="video-source" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      
+      <!-- Audio -->
+      <audio  id="question-audio" controls style="display: none;">
+        <source src="" id="audio-source" type="audio/mp3">
+        Your browser does not support the audio tag.
+      </audio>
+    </div>
+    <!-- Reveal Answer Button -->
+    <button class="reveal-answer-btn" onclick="revealAnswer()">اظهار الأجابة</button>
+  </div>
+
+  <!-- Right Column for Team Names and Icon -->
+  <div class="team-name-container">
+    <!-- Team 1 Info -->
+    <div class="team-box" id="team1Info">
+      <div class="team-name" id="team1Display"></div>
+      <div class="team-name" id="score1Display"></div>
+      <div class="double-icon" id="doubleIcon1" onclick="toggleDoubleIcon(1)">
+        <img src="public/img/x2.png" alt="Double Points Icon" />
+        <div class="tooltip">Double Points</div>
+      </div> <!-- Clickable Double icon for Team 1 -->
+    </div>
+
+    <!-- Team 2 Info -->
+    <div class="team-box" id="team2Info">
+      <div class="team-name" id="team2Display">Team 2</div>
+      <div class="team-name" id="score2Display"></div>
+      <div class="double-icon" id="doubleIcon2" onclick="toggleDoubleIcon(2)">
+        <img src="public/img/x2.png" alt="Double Points Icon" />
+        <div class="tooltip">Double Points</div>
+      </div> <!-- Clickable Double icon for Team 2 -->
+    </div>
+  </div>
+</div>
+
+  <script>
+    let score1 = new URLSearchParams(window.location.search).get('score1') || sessionStorage.getItem('score1') || 0;
+let score2 = new URLSearchParams(window.location.search).get('score2') || sessionStorage.getItem('score2') || 0;
+// Display scores (optional, to show on the page)
+let key;
+let key2;
+document.getElementById('score1Display').textContent = ` ${score1}`;
+document.getElementById('score2Display').textContent = `${score2}`;
+    let questionText;
+    let answerText;
+    let answerImage;
+    let questionImage;
+    let team1Name;
+    let team2Name;
+    let level; 
+    let category;
+    document.addEventListener('DOMContentLoaded', function () {
+  // Retrieve the URL parameters
+  const params = new URLSearchParams(window.location.search);
+
+  // Get Team 1 Name and Team 2 Name
+   team1Name = params.get('team1');
+   team2Name = params.get('team2');
+   level = params.get('level');
+   category = params.get('category');
+
+  // Display team names on the page
+  if (team1Name && team2Name) {
+    document.getElementById('team1Display').textContent = team1Name;
+    document.getElementById('team2Display').textContent = team2Name;
+  } else {
+    document.getElementById('team1Display').textContent = "Team 1: Not found";
+    document.getElementById('team2Display').textContent = "Team 2: Not found";
+  }
+
+  // Retrieve the query parameters from the URL (if passed as a query string)
+  const params1 = new URLSearchParams(window.location.search);
+
+  // Get the 'data' query parameter (which contains the question data)
+  const serializedData = params1.get('data');
+  if (serializedData) {
+    // Deserialize the question data
+    const questionData = JSON.parse(decodeURIComponent(serializedData));
+
+    // Extract the first question (assuming only one question exists in the data)
+    const question = questionData[0]; // Access the first (and only) question
+
+    // Store the question details in variables
+     questionText = question.Question;
+     answerText = question.answer;
+     answerImage = question.answerimg;
+     questionImage = question.image;
+     
+    // Set the content of HTML elements dynamically
+    document.getElementById('question-text').textContent = questionText; // Question text
+
+    // Handle the image, video, or MP3
+    const questionImageElement = document.getElementById('question-image');
+    const questionVideoElement = document.getElementById('question-video');
+    const questionAudioElement = document.getElementById('question-audio');
+    const videoSource = document.getElementById('video-source');
+    const audioSource = document.getElementById('audio-source');
+
+    if (questionImage && questionImage !== "no") {
+      if (/\.(jpg|jpeg|png)$/i.test(questionImage)) {
+        // It's an image
+        questionImageElement.src = `public/img/${questionImage}`;
+        questionImageElement.style.display = "block";
+        questionVideoElement.style.display = "none"; // Hide video
+        questionAudioElement.style.display = "none"; // Hide audio
+      } else if (/\.mp4$/i.test(questionImage)) {
+        // It's a video
+        videoSource.src = `public/img/${questionImage}`;
+        questionVideoElement.style.display = "block";
+        questionImageElement.style.display = "none"; // Hide image
+        questionAudioElement.style.display = "none"; // Hide audio
+
+        // Reload the video and handle autoplay
+        questionVideoElement.load();
+        questionVideoElement.addEventListener('loadeddata', () => {
+          questionVideoElement.play().catch((error) => {
+            console.error('Video playback failed:', error);
+          });
+        });
+      } else if (/\.mp3$/i.test(questionImage)) {
+        // It's an MP3
+        audioSource.src = `public/img/${questionImage}`;
+        questionAudioElement.style.display = "block";
+        questionImageElement.style.display = "none"; // Hide image
+        questionVideoElement.style.display = "none"; // Hide video
+
+        // Reload the audio and handle autoplay
+        questionAudioElement.load();
+        questionAudioElement.addEventListener('loadeddata', () => {
+          questionAudioElement.play().catch((error) => {
+            console.error('Audio playback failed:', error);
+          });
+        });
+      }
+    } else {
+      // Hide all if no valid image, video, or audio
+      questionImageElement.style.display = "none";
+      questionVideoElement.style.display = "none";
+      questionAudioElement.style.display = "none";
+    }
+  }
+});
+
+    function revealAnswer() {
+      // Retrieve the data you want to pass
+  
+  // alert(answerText);
+  // Construct the URL for the next page
+  const params = new URLSearchParams(window.location.search);
+
+       level = params.get('level');
+      // alert(level);
+      const selectedCategories = JSON.parse(localStorage.getItem('selectedCategories')) || [];
+        const categoriesString = selectedCategories.join(',');
+        //alert(categoriesString);
+        //alert(answerImage);
+  const nextPageUrl = `/start5?questionText=${encodeURIComponent(questionText)}&answerText=${encodeURIComponent(answerText)}&answerImage=${encodeURIComponent(answerImage)}&questionImage=${encodeURIComponent(questionImage)}&score1=${encodeURIComponent(score1)}&score2=${encodeURIComponent(score2)}&team1=${encodeURIComponent(team1Name)}&team2=${encodeURIComponent(team2Name)}&level=${encodeURIComponent(level)}&category=${category}&categories=${encodeURIComponent(categoriesString)}&key1=${key}&key2=${key2}`;
+
+  // Redirect to the new page
+  window.location.href = nextPageUrl;
+    }
+
+    function endGame(){
+  // Reset scores
+  score1 = 0;
+    score2 = 0;
+ // Clear the localStorage entries for both teams
+ localStorage.removeItem('team1_usedX2');
+  localStorage.removeItem('team2_usedX2');
+  localStorage.removeItem('key1');
+  localStorage.removeItem('key2');
+  // Reset icons to their default state
+  resetIconState(1);
+  resetIconState(2);
+    
+
+    // Clear session storage for scores
+    sessionStorage.removeItem('score1');
+    sessionStorage.removeItem('score2');
+
+    // Reset the displayed scores
+    document.getElementById('score1Display').textContent = score1;
+    document.getElementById('score2Display').textContent = score2;
+
+    // Reset team names
+    document.getElementById('team1Display').textContent = "Team 1: Not found";
+    document.getElementById('team2Display').textContent = "Team 2: Not found";
+
+    // Reset category images
+    document.getElementById('category1-name').src = '';
+    document.getElementById('category2-name').src = '';
+    document.getElementById('category3-name').src = '';
+    document.getElementById('category4-name').src = '';
+    document.getElementById('category5-name').src = '';
+    document.getElementById('category6-name').src = '';
+
+    // Reset categories
+    category1 = category2 = category3 = category4 = category5 = category6 = '';
+}
+// Function to reset the x2 usage at the start of a new round
+function resetRound(category, level) {
+  localStorage.removeItem(`team1_usedX2_${category}_${level}`);
+  localStorage.removeItem(`team2_usedX2_${category}_${level}`);
+}
+// Function to handle the icon click
+function toggleDoubleIcon(team) {
+  const icon = document.getElementById(`doubleIcon${team}`);
+
+  // Check if the icon has already been clicked
+  if (!icon.classList.contains('clicked')) {
+    
+    if(team == 1){
+      // Mark the feature as used in localStorage
+    localStorage.setItem(`team${team}_usedX2`, 'true');
+    key = `team${team}_${category}_${level}`;
+     // Store the key in localStorage
+     //alert(team);
+    localStorage.setItem('key1', key);
+
+    }
+    if(team ==2){
+        // Mark the feature as used in localStorage
+    localStorage.setItem(`team${team}_usedX2`, 'true');
+    key2 = `team${team}_${category}_${level}`;
+     // Store the key in localStorage
+     //alert(team);
+    localStorage.setItem('key2', key2);
+    }
+     
+   
+
+
+
+
+    // Apply the gray effect and disable clicking
+    icon.classList.add('clicked');
+    icon.style.pointerEvents = 'none';
+    icon.style.filter = 'grayscale(100%)';
+  }
+}
+
+
+// Run on page load to check if the feature was already used for either team
+document.addEventListener("DOMContentLoaded", function() {
+  checkFeatureUsage(1); // Check for Team 1
+  checkFeatureUsage(2); // Check for Team 2
+});
+
+// Function to check if a team has already used the x2 feature
+function checkFeatureUsage(team) {
+  const icon = document.getElementById(`doubleIcon${team}`);
+  
+  // Check if the feature has been used and stored in localStorage
+  const used = localStorage.getItem(`team${team}_usedX2`);
+  
+  if (used === 'true') {
+    // Apply the gray effect and disable clicking if the feature has been used
+    icon.classList.add('clicked');
+    icon.style.pointerEvents = 'none';
+    icon.style.filter = 'grayscale(100%)';
+  }
+}
+  </script>
+
+</body>
+</html>

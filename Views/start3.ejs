@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Categories</title>
+  <style>
+    /* Prevent scrolling on the entire page */
+    body,
+    html {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      /* Prevent scrolling */
+      background-image: url('public/img/5.png');
+      /* Background image for the entire page */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      /* Make the background stay in place when scrolling */
+    }
+
+    /* Navbar Styling */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: transparent;
+      /* Fully transparent */
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    /* Logo and Website Name */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      width: 80px;
+      height: 70px;
+    }
+
+    .website-name {
+      font-size: 29px;
+      font-weight: bold;
+      color: #000;
+      /* Black text */
+    }
+
+    /* Exit Game Button */
+    .exit-game {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .exit-game:hover {
+      opacity: 0.8;
+    }
+
+    .exit-text {
+      font-size: 22px;
+      color: #000;
+      /* Black text */
+    }
+
+    .exit-game a {
+      text-decoration: none;
+      /* Remove underline */
+      color: inherit;
+      /* Inherit text color */
+      display: flex;
+      /* Ensure flex layout works */
+      align-items: center;
+      /* Align items vertically */
+      gap: 8px;
+      /* Add spacing between text and icon */
+    }
+
+    .exit-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    /* Main Content Section */
+    .main-container {
+      display: flex;
+      flex-direction: row;
+      margin-top: 60px;
+      /* Add margin to offset the fixed top menu */
+      width: 100%;
+      padding: 20px;
+      overflow: hidden;
+      /* Prevent overflow */
+    }
+
+    /* Left Column (Categories Grid) */
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      flex: 3;
+      margin-right: 20px;
+    }
+
+    /* Category Grid Layout */
+    .category-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      /* 3 columns for categories */
+      grid-template-rows: repeat(2, 1fr);
+      /* 2 rows for categories */
+      gap: 20px;
+    }
+
+    /* Category Card Styling */
+    .category {
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    /* Category Image Styling */
+    .category img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* Levels (100, 300, 600) Buttons Styling */
+    .levels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      /* 3 buttons in each row */
+      gap: 10px;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .levels button {
+      background-color: #fff;
+      padding: 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+    }
+
+    .levels button:hover {
+      background-color: #f1c0c0;
+    }
+
+    /* Team Score Section Styling */
+    .team-score {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      width: 100%;
+      padding: 0 380px;
+      /* Add padding to avoid content touching the sides */
+    }
+
+    /* Team Styling */
+    .team {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      font-size: 18px;
+      width: 50%;
+      /* Ensure equal width for both teams */
+      gap: 15px;
+      /* Space between score and team name */
+    }
+
+    /* Team Name Styling */
+    .team-name {
+      font-size: 22px;
+      font-weight: bold;
+      color: #080808;
+      /* Dark color for the team name */
+      text-transform: uppercase;
+      /* Uppercase text for the team name */
+      letter-spacing: 2px;
+      /* Space between letters */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      /* Shadow effect on the text */
+    }
+
+    /* Score Styling */
+    .score {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    /* Score Button Styling */
+    .score-btn {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 5px 15px;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      margin-bottom: 10px;
+    }
+
+    .score-btn:hover {
+      background-color: #f1c0c0;
+    }
+
+    /* Score Value Styling */
+    .score-value {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    button:disabled {
+      background-color: gray;
+      /* Change background color to gray */
+      color: white;
+      /* Change text color to white */
+      cursor: not-allowed;
+      /* Change cursor to show that it's disabled */
+    }
+
+    .disabled-button {
+      opacity: 0.6;
+      /* Optional: make the button look faded */
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #returnHome {
+      background: #28a745;
+      color: white;
+    }
+
+    #cancel {
+      background: #dc3545;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Menu -->
+
+  <div class="navbar">
+    <!-- Logo and Website Name -->
+    <div class="logo-container">
+      <img src="public/img/logo.png" alt="Logo" class="logo">
+      <span class="website-name">حلّها!</span>
+    </div>
+
+    <!-- Exit Game Button -->
+    <div class="exit-game">
+      <a href="/" onclick="endGame()">
+        <span class="exit-text">إنهاء اللعبة</span>
+        <img src="public/img/left.png" alt="Exit Icon" class="exit-icon">
+      </a>
+    </div>
+  </div>
+
+
+  <!-- Main Game Area -->
+  <div class="main-container">
+    <!-- Left Column with Category Cards -->
+    <div class="left-column">
+      <!-- Category Cards Grid -->
+      <div class="category-container">
+        <!-- Category 1 -->
+        <div class="category">
+          <div class="image-container">
+            <img src="" alt="Category 1" id="category1-name">
+          </div>
+          <div class="levels">
+            <button onclick="Questionpage(category1, 100, 'category1')" id="category1-level100">100</button>
+            <button onclick="Questionpage(category1, 200, 'category1')" id="category1-level200">200</button>
+            <button onclick="Questionpage(category1, 300, 'category1')" id="category1-level300">300</button>
+            <button onclick="Questionpage(category1, 400, 'category1')" id="category1-level400">400</button>
+            <button onclick="Questionpage(category1, 500, 'category1')" id="category1-level500">500</button>
+            <button onclick="Questionpage(category1, 600, 'category1')" id="category1-level600">600</button>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="category">
+          <div class="image-container">
+            <img src="" alt="Category 2" id="category2-name">
+          </div>
+          <div class="levels">
+            <button onclick="Questionpage(category2, 100, 'category2')" id="category2-level100">100</button>
+            <button onclick="Questionpage(category2, 200, 'category2')" id="category2-level200">200</button>
+            <button onclick="Questionpage(category2, 300, 'category2')" id="category2-level300">300</button>
+            <button onclick="Questionpage(category2, 400, 'category2')" id="category2-level400">400</button>
+            <button onclick="Questionpage(category2, 500, 'category2')" id="category2-level500">500</button>
+            <button onclick="Questionpage(category2, 600, 'category2')" id="category2-level600">600</button>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="category">
+          <div class="image-container">
+            <img src="" alt="Category 3" id="category3-name">
+          </div>
+          <div class="levels">
+            <button onclick="Questionpage(category3, 100, 'category3')" id="category3-level100">100</button>
+            <button onclick="Questionpage(category3, 200, 'category3')" id="category3-level200">200</button>
+            <button onclick="Questionpage(category3, 300, 'category3')" id="category3-level300">300</button>
+            <button onclick="Questionpage(category3, 400, 'category3')" id="category3-level400">400</button>
+            <button onclick="Questionpage(category3, 500, 'category3')" id="category3-level500">500</button>
+            <button onclick="Questionpage(category3, 600, 'category3')" id="category3-level600">600</button>
+          </div>
+        </div>
+
+        <!-- Category 4 -->
+        <div class="category">
+          <div class="image-container">
+            <img src="" alt="Category 4" id="category4-name">
+          </div>
+          <div class="levels">
+            <button onclick="Questionpage(category4, 100, 'category4')" id="category4-level100">100</button>
+            <button onclick="Questionpage(category4, 200, 'category4')" id="category4-level200">200</button>
+            <button onclick="Questionpage(category4, 300, 'category4')" id="category4-level300">300</button>
+            <button onclick="Questionpage(category4, 400, 'category4')" id="category4-level400">400</button>
+            <button onclick="Questionpage(category4, 500, 'category4')" id="category4-level500">500</button>
+            <button onclick="Questionpage(category4, 600, 'category4')" id="category4-level600">600</button>
+          </div>
+        </div>
+
+        <!-- Category 5 -->
+        <div class="category">
+          <div class="image-container">
+            <img src="" alt="Category 5" id="category5-name">
+          </div>
+          <div class="levels">
+            <button onclick="Questionpage(category5, 100, 'category5')" id="category5-level100">100</button>
+            <button onclick="Questionpage(category5, 200, 'category5')" id="category5-level200">200</button>
+            <button onclick="Questionpage(category5, 300, 'category5')" id="category5-level300">300</button>
+            <button onclick="Questionpage(category5, 400, 'category5')" id="category5-level400">400</button>
+            <button onclick="Questionpage(category5, 500, 'category5')" id="category5-level500">500</button>
+            <button onclick="Questionpage(category5, 600, 'category5')" id="category5-level600">600</button>
+          </div>
+        </div>
+
+        <!-- Category 6 -->
+        <div class="category">
+          <div class="image-container">
+            <img src="" alt="Category 6" id="category6-name">
+          </div>
+          <div class="levels">
+            <button onclick="Questionpage(category6, 100, 'category6')" id="category6-level100">100</button>
+            <button onclick="Questionpage(category6, 200, 'category6')" id="category6-level200">200</button>
+            <button onclick="Questionpage(category6, 300, 'category6')" id="category6-level300">300</button>
+            <button onclick="Questionpage(category6, 400, 'category6')" id="category6-level400">400</button>
+            <button onclick="Questionpage(category6, 500, 'category6')" id="category6-level500">500</button>
+            <button onclick="Questionpage(category6, 600, 'category6')" id="category6-level600">600</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="winnerModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2 id="winnerMessage"></h2>
+      <button id="returnHome">Return to Home</button>
+      <button id="cancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Team Score Section -->
+  <div class="team-score">
+    <div class="team">
+      <div class="score">
+        <button class="score-btn" onclick="updateScore('team1', 'decrease')">-</button>
+        <span id="team1-score" class="score-value">0</span>
+        <button class="score-btn" onclick="updateScore('team1', 'increase')">+</button>
+      </div>
+      <div class="team-name" id="team1Display"></div>
+    </div>
+    <div class="team">
+      <div class="score">
+        <button class="score-btn" onclick="updateScore('team2', 'decrease')">-</button>
+        <span id="team2-score" class="score-value">0</span>
+        <button class="score-btn" onclick="updateScore('team2', 'increase')">+</button>
+      </div>
+      <div class="team-name" id="team2Display"></div>
+    </div>
+  </div>
+
+  <script>
+    // Declare categories in the global scope
+    let category1, category2, category3, category4, category5, category6;
+    let score1;
+    let score2;
+    let team1Name;
+    let team2Name;
+    let c1 = "category1";
+    let c2 = "category2";
+    let c3 = "category3";
+    let c4 = "category4";
+    let c5 = "category5";
+    let c6 = "category6";
+    // Initialize scores (retrieve from sessionStorage if exists, else set to 0)
+    score1 = parseInt(new URLSearchParams(window.location.search).get('score1')) || parseInt(sessionStorage.getItem('score1')) || 0;
+    score2 = parseInt(new URLSearchParams(window.location.search).get('score2')) || parseInt(sessionStorage.getItem('score2')) || 0;
+    document.addEventListener('DOMContentLoaded', function () {
+      // Retrieve the stored selected levels from localStorage
+      const selectedLevels = JSON.parse(localStorage.getItem('selectedLevels')) || {};
+
+      // Disable all previously clicked levels
+      for (const categoryId in selectedLevels) {
+        selectedLevels[categoryId].forEach(level => {
+          const levelButton = document.getElementById(categoryId + '-level' + level);
+          if (levelButton) {
+            levelButton.disabled = true;
+            levelButton.classList.add('disabled-button');
+          }
+        });
+      }
+
+      // Check if all levels are disabled
+      if (checkAllLevelsDisabled()) {
+        declareWinner();
+      }
+
+
+
+
+
+
+      // Retrieve the URL parameters
+      const params = new URLSearchParams(window.location.search);
+
+      // Get Team 1 Name and Team 2 Name
+      team1Name = params.get('team1');
+      team2Name = params.get('team2');
+      // Display team names on the page
+      if (team1Name && team2Name) {
+        document.getElementById('team1Display').textContent = team1Name;
+        document.getElementById('team2Display').textContent = team2Name;
+      } else {
+        document.getElementById('team1Display').textContent = "Team 1: Not found";
+        document.getElementById('team2Display').textContent = "Team 2: Not found";
+      }
+      // Get the categories from the URL
+      const categoriesString = params.get('categories');
+      const categoriesArray = categoriesString ? categoriesString.split(',') : [];
+
+      // Ensure categories are stored in variables for easy access
+      category1 = categoriesArray[0] || '';
+      category2 = categoriesArray[1] || '';
+      category3 = categoriesArray[2] || '';
+      category4 = categoriesArray[3] || '';
+      category5 = categoriesArray[4] || '';
+      category6 = categoriesArray[5] || '';
+
+      // Set the image source for each category dynamically
+      document.getElementById('category1-name').src = `public/img/${category1}.jpg` || `public/img/${category1}.png`;
+      document.getElementById('category2-name').src = `public/img/${category2}.jpg` || `public/img/${category2}.png`;
+      document.getElementById('category3-name').src = `public/img/${category3}.jpg` || `public/img/${category3}.png`;
+      document.getElementById('category4-name').src = `public/img/${category4}.jpg` || `public/img/${category4}.png`;
+      document.getElementById('category5-name').src = `public/img/${category5}.jpg` || `public/img/${category5}.png`;
+      document.getElementById('category6-name').src = `public/img/${category6}.jpg` || `public/img/${category6}.png`;
+
+
+
+
+    });
+
+    async function Questionpage(category, level, categoryId) {
+      // Construct a unique button ID using categoryId and level
+      const levelButton = document.getElementById(categoryId + '-level' + level);
+
+      // Disable the clicked button
+      if (levelButton) {
+        levelButton.disabled = true;
+        levelButton.classList.add('disabled-button'); // Optional for visual feedback
+      }
+
+      // Store the clicked level in localStorage so it persists across pages
+      let selectedLevels = JSON.parse(localStorage.getItem('selectedLevels')) || {};
+
+      // Initialize the category array for the specific categoryId if it doesn't exist
+      if (!selectedLevels[categoryId]) {
+        selectedLevels[categoryId] = [];
+      }
+
+      // Add the selected level to the array for the categoryId
+      if (!selectedLevels[categoryId].includes(level)) {
+        selectedLevels[categoryId].push(level);
+      }
+      localStorage.setItem('selectedLevels', JSON.stringify(selectedLevels));
+
+
+      // Check if all levels for all categories are disabled
+
+      const params = new URLSearchParams(window.location.search);
+
+      // Get Team 1 Name and Team 2 Name
+       team1Name = params.get('team1');
+       team2Name = params.get('team2');
+
+      // Alert to check the team names
+      //alert(Team 1: ${team1Name}, Team 2: ${team2Name});
+
+      // Construct the API URL
+      const apiUrl = `/api/questions?category=${category}&level=${level}&score1=${score1}&score2=${score2}`;
+
+      // Alert to check the API URL
+      // alert(API URL: ${apiUrl});
+
+      try {
+        // Fetch the question data from the API
+        const response = await fetch(apiUrl);
+
+        // Check if the response is successful
+        if (response.ok) {
+          const data = await response.json();
+
+          if (data && data.length > 0) {
+            // Alert to check the data fetched
+            //alert(Fetched Question Data: ${JSON.stringify(data)});
+
+            // Handle the response and pass data to the next page
+            console.log("Question Data:", data);
+
+            // Storing the data in sessionStorage for passing to the next page
+            sessionStorage.setItem('questionData', JSON.stringify(data)); // Store the data
+            // Assuming you want to pass selectedCategories to start4
+            const selectedCategories = JSON.parse(localStorage.getItem('selectedCategories')) || [];
+            const categoriesString = selectedCategories.join(',');
+            //alert(categoriesString);
+            // Construct the next page URL with team names as query parameters
+            const nextPageUrl = `/start4?team1=${encodeURIComponent(team1Name)}&team2=${encodeURIComponent(team2Name)}&category=${category}&data=${encodeURIComponent(JSON.stringify(data))}&level=${encodeURIComponent(level)}&categories=${encodeURIComponent(categoriesString)}&score1=${encodeURIComponent(score1)}&score2=${encodeURIComponent(score2)}`;
+
+            // Alert before navigating
+            //alert(Navigating to: ${nextPageUrl});
+
+            // Navigate to the next page
+            window.location.href = nextPageUrl;
+          } else {
+            // If no data found, alert the user
+            alert('No questions found for this level');
+          }
+        } else {
+          // If the API call is not successful, alert the user
+          alert('Error fetching question');
+        }
+      } catch (error) {
+        // If there is an error fetching, alert the user
+        alert('Error fetching question');
+        console.error('Error fetching question:', error);
+      }
+
+    }
+
+    function checkAllLevelsDisabled() {
+      const selectedLevels = JSON.parse(localStorage.getItem('selectedLevels')) || {};
+      let totalDisabledLevels = 0;
+
+      // Count all the disabled levels across all categories
+      for (const categoryId in selectedLevels) {
+        totalDisabledLevels += selectedLevels[categoryId].length;
+      }
+
+      // Return true if all 36 levels are disabled
+      return totalDisabledLevels === 36;
+    }
+
+    function declareWinner() {
+      const params = new URLSearchParams(window.location.search);
+
+      // Get Team 1 Name and Team 2 Name
+      team1Name = params.get('team1');
+      team2Name = params.get('team2');
+      let message;
+
+      if (score1 > score2) {
+        message = `انتهت اللعبة! ${team1Name} يفوز بـ ${score1} نقاط!`;
+      } else if (score2 > score1) {
+        message = `انتهت اللعبة! ${team2Name} يفوز بـ ${score2} نقاط!`;
+      } else {
+        message = `انتهت اللعبة! التعادل! كلا ${team1Name} و ${team2Name} لديهما ${score1} نقاط!`;
+      }
+
+      // Show the modal
+      const modal = document.getElementById('winnerModal');
+      const winnerMessage = document.getElementById('winnerMessage');
+      const returnHomeButton = document.getElementById('returnHome');
+      const cancelButton = document.getElementById('cancel');
+
+      winnerMessage.textContent = message;
+      modal.style.display = 'flex';
+
+      // Return to home page
+      returnHomeButton.onclick = () => {
+        window.location.href = '/'; // Replace with your home page route
+      };
+
+      // Close the modal on cancel
+      cancelButton.onclick = () => {
+        modal.style.display = 'none';
+      };
+    }
+
+
+    // Function to update scores on the page
+    function updateScore(team, action) {
+      // Retrieve the score element for the respective team
+      let scoreElement = document.getElementById(`${team}-score`);
+      let score;
+
+      // Determine which team to update
+      if (team === 'team1') {
+        score = score1;
+      } else if (team === 'team2') {
+        score = score2;
+      }
+
+      // Update the score based on the action
+      if (action === 'increase') {
+        score += 50; // Increase score by 50 (you can adjust this value)
+      } else if (action === 'decrease' && score >= 50) {
+        score -= 50; // Decrease score by 50, but not below 0
+      }
+
+      // Update the score element on the page
+      scoreElement.innerText = score;
+
+      // Save the updated score back to sessionStorage
+      if (team === 'team1') {
+        sessionStorage.setItem('score1', score);
+        score1 = score; // Update the local variable
+      } else if (team === 'team2') {
+        sessionStorage.setItem('score2', score);
+        score2 = score; // Update the local variable
+      }
+    }
+
+    // Initialize the score display when the page loads
+    function initializeScores() {
+      document.getElementById('team1-score').innerText = score1;
+      document.getElementById('team2-score').innerText = score2;
+    }
+    function endGame() {
+      // Reset scores
+      score1 = 0;
+      score2 = 0;
+      // Clear the localStorage entries for both teams
+      localStorage.removeItem('team1_usedX2');
+      localStorage.removeItem('team2_usedX2');
+      localStorage.removeItem('key1');
+      localStorage.removeItem('key2');
+      // Reset icons to their default state
+      resetIconState(1);
+      resetIconState(2);
+
+
+      // Clear session storage for scores
+      sessionStorage.removeItem('score1');
+      sessionStorage.removeItem('score2');
+
+      // Reset the displayed scores
+      document.getElementById('score1Display').textContent = score1;
+      document.getElementById('score2Display').textContent = score2;
+
+      // Reset team names
+      document.getElementById('team1Display').textContent = "Team 1: Not found";
+      document.getElementById('team2Display').textContent = "Team 2: Not found";
+
+      // Reset category images
+      document.getElementById('category1-name').src = '';
+      document.getElementById('category2-name').src = '';
+      document.getElementById('category3-name').src = '';
+      document.getElementById('category4-name').src = '';
+      document.getElementById('category5-name').src = '';
+      document.getElementById('category6-name').src = '';
+
+      // Reset categories
+      category1 = category2 = category3 = category4 = category5 = category6 = '';
+    }
+    // Initialize scores when the page loads
+    initializeScores();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Page</title>
+  <style>
+    /* Basic styling */
+    body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('public/img/4.png'); /* Background image for the entire page */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll; /* Enable vertical scrolling */
+  background-attachment: fixed; /* Keeps the background image fixed while scrolling */
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between left (logo) and center (menu) */
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent; /* Fully transparent background */
+  z-index: 100;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 18px;
+  padding: 15px 30px;
+  margin: 0 15px;
+  color: black;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #efb7ce; /* Change text color to pink on hover */
+}
+
+/* Logo and Website Name on the Left */
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* Align logo and name to the far left */
+}
+
+.logo {
+  height: 50px; /* Adjust the size of the logo */
+  margin-right: 5px; /* Space between logo and text */
+}
+
+.website-name {
+  font-size: 30px; /* Adjust font size */
+  font-weight: bold; /* Make it bold */
+  color: #18375d; /* Blue color for the website name */
+  direction: rtl; /* Proper rendering for Arabic text */
+}
+
+/* Center the Navigation Links */
+.nav-links {
+  display: flex;
+  justify-content: center; /* Align links in the center */
+  flex-grow: 1; /* Ensure they take up remaining space */
+}
+
+    /* Spacing after the menu */
+    .spacer {
+      height: 70px; /* Increased space after menu */
+    }
+
+    /* Game Image */
+    .game-image {
+      width: 80%; /* Increased width of the image */
+      max-width: 800px; /* Maximum width */
+      height: auto;
+      margin-bottom: 40px; /* Space after the image */
+      border-radius: 15px; /* Add rounded corners */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    }
+
+    /* About Us section */
+    #aboutus {
+  padding: 3px; /* Reduced padding for smaller height */
+  background-color: #f4f4f4; /* Light background color */
+  color: #333; /* Dark text for visibility */
+  text-align: center; /* Center align text */
+  margin-top: auto;
+  width: 100%;
+  max-width: 1200px; /* Max width for content */
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50% 50% 0 0; /* Top half circle effect */
+  position: relative;
+  overflow: hidden; /* Hide overflow for clean edges */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
+}
+
+#aboutus h2 {
+  font-size: 22px; /* Smaller heading font size */
+  color: #18375d; /* Color for headings */
+  margin-bottom: 10px; /* Reduced spacing */
+}
+
+#aboutus p {
+  font-size: 14px; /* Smaller font size for paragraphs */
+  line-height: 1.4; /* Reduced line height */
+  margin-bottom: 8px; /* Reduced spacing between paragraphs */
+}
+
+#aboutus a {
+  color: #18375d; /* Dark blue color for email link */
+  text-decoration: none;
+}
+
+#aboutus a:hover {
+  text-decoration: underline; /* Hover effect for the email link */
+}
+
+.card {
+  width: 100%;
+  max-width: 1200px; /* Maximum width of the card */
+  margin: 40px auto; /* Center the card with margin */
+  background-color: #f4f4f4; /* Light background color for the card */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  overflow: hidden; /* Ensure no content overflows the rounded corners */
+}
+
+.card-content {
+  display: flex; /* Flexbox for side-by-side layout */
+  align-items: center; /* Vertically center the items */
+  padding: 20px;
+}
+
+.card-image {
+  flex: 1; /* Image takes up half the space */
+  max-width: 50%; /* Set the maximum width of the image */
+}
+
+.card-image img {
+  width: 100%; /* Ensure the image fills the container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Rounded corners for the image */
+}
+
+.card-text {
+  flex: 2; /* Text will take up twice the space of the image */
+  padding-left: 20px; /* Space between image and text */
+}
+
+.card-text h3 {
+  text-align: right;
+  font-size: 25px; /* Larger font size for the heading */
+  color: #18375d; /* Heading color */
+  margin-bottom: 10px; /* Space between heading and text */
+}
+
+.card-text p {
+  font-size: 20px; /* Font size for the description */
+  color: #333; /* Dark text color for readability */
+  line-height: 1.6; /* Increase line height for better text spacing */
+}
+
+/* Container for the game description */
+.game-description {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.game-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.game-text h3 {
+  font-size: 25px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.game-text p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #34495e;
+  margin-bottom: 15px;
+}
+
+.game-text strong {
+  color: #e74c3c; /* لون مميز للكلمات المفتاحية */
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Transparent Navigation Menu -->
+  <div class="navbar">
+    <!-- Logo and Website Name -->
+    <div class="logo-container">
+      <img src="public/img/logo.png" alt="Logo" class="logo">
+      <span class="website-name">حلّها!</span>
+    </div>
+  
+    <!-- Center Navigation Links -->
+    <div class="nav-links">
+      <a href="/">الصفحة الرئيسيه</a>
+      <a href="/Startgame">ألعب </a>
+      <a href="/ourgames">جديدنا</a>
+      <a href="#aboutus">عني</a>
+    </div>
+  </div>
+
+  <!-- Spacer -->
+<div class="spacer"></div>
+
+  <!-- Game Image -->
+  <!--<img src="public/img/1.png" alt="Game Image" class="game-image">-->
+
+
+  <div class="game-description">
+    <img src="public/img/33.png" alt="صورة اللعبة" class="game-image" />
+    <div class="game-text">
+        <h3>تحدي الأسئلة: مغامرة مليئة بالتنافس والإثارة!</h3>
+        <p>
+            استعدوا لخوض تجربة جماعية استثنائية مليئة بالتحدي والإثارة! تنقسم اللعبة إلى فريقين يتنافسان في الإجابة على مجموعة من الأسئلة المتنوعة من <strong>أكثر من 30 فئة مختلفة</strong>، مثل الأفلام، المسلسلات، ألعاب الفيديو، التاريخ، والعديد من المجالات الأخرى. كل فريق يختار الفئة المفضلة لديه، ليبدأ التحدي!
+        </p>
+        <p>
+            تحتوي كل فئة على <strong>ستة أسئلة</strong> بمستويات صعوبة متزايدة، مع توزيع النقاط كالتالي: <strong>100، 200، 300، 400، 500، و600 نقطة</strong>. تبدأ الأسئلة من السهل وتصبح أكثر تحديًا مع ازدياد النقاط، فكلما كانت الإجابة أصعب، كانت النقاط أكبر! الفريق الذي يحقق أكبر عدد من النقاط في النهاية يُتوج بالفوز.
+        </p>
+        <p>
+            ما يميزنا هو <strong>التنوع والتجديد المستمر</strong>! الأسئلة تتغير دائمًا، مما يضمن أن كل لعبة هي تجربة فريدة ومثيرة. هل أنتم مستعدون للتحدي؟ حان وقت إثبات من هو الفريق الأقوى!
+        </p>
+    </div>
+</div>
+<meta name="keywords" content="تحدي اسئله, حلها, اسئله على حسب الفئات,  , فعاليه, فعاليه فئات, اسئله و اجوبه, برا السالفه , اسرع واحد , مخمخ , سين جيم , كود نيمز , لعبه , لعبة  , فعاليه جمعات , جاكارو العاب , العاب مجانيه , العاب جماعيه , لعبه جماعيه">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="لعبة جماعية مسلية ومناسبة للجميع، تختبر معلوماتك العامة بمجموعة واسعة من الأسئلة في فئات كثيرة. اختر الفئة الأحب لديك واستمتع بالفعالية مع اصحابك أو العائلة">
+
+<meta name="author" content="Sara Alshammari">
+  <!-- About Us Section -->
+  <div id="aboutus">
+    <h2>About Me</h2>
+    <p>I am a passionate developer who enjoys building websites and loves gaming.</p>
+    <p>My name is Sara Alshammari, and I'm the sole developer working on this website.</p>
+    <p>Email: <a href="mailto:Sara_alshmmari2@outlook.com">Sara_alshmmari2@outlook.com</a></p>
+  </div>
+<script>
+  let currentSlide = 0;
+const slides = document.querySelector('.slides');
+const totalSlides = document.querySelectorAll('.slide').length;
+
+function showSlide(index) {
+  if (index >= totalSlides) {
+    currentSlide = 0;
+  } else if (index < 0) {
+    currentSlide = totalSlides - 1;
+  } else {
+    currentSlide = index;
+  }
+  const offset = -currentSlide * 100;
+  slides.style.transform = `translateX(${offset}%)`;
+}
+
+function nextSlide() {
+  showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+  showSlide(currentSlide - 1);
+}
+
+// Auto-slide every 5 seconds
+setInterval(nextSlide, 5000);
+</script>
+</body>
+</html>
