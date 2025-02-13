@@ -59,7 +59,7 @@ app.get('/start5', (req, res) => {
   res.render("start5");
 });
 
-app.get('https://hlwh.onrender.com/api/questions', async (req, res) => {
+app.get('/api/questions', async (req, res) => {
   const { category, level } = req.query;
 
   try {
