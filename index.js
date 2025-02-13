@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import cors from 'cors';
-const cors = require('cors');
 app.use(cors()); // This will allow all domains, adjust as needed
 // Define a common schema for all collections
 const commonSchema = new mongoose.Schema({
