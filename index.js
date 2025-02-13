@@ -24,7 +24,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const port = 3005;
+const port = 10000;
 const dbURI = "mongodb+srv://sara:Sara1234@cluster0.hqsjf3p.mongodb.net/SaraGame?retryWrites=true&w=majority&appName=Cluster0";
 
 app.use(express.static(__dirname, {
