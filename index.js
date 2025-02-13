@@ -102,7 +102,7 @@ app.get('/api/questions', async (req, res) => {
 
 
 // Connect to MongoDB and start server
-mongoose.connect("mongodb+srv://sara:Sara1234@cluster0.hqsjf3p.mongodb.net/SaraGame?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect(dbURI)
   .then(() => {
     console.log("Connected to MongoDB");
     app.listen(port, () => {
