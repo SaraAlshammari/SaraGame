@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Categories</title>
+  <title>حلّها!</title>
   <style>
-    /* Prevent scrolling on the entire page */
+    /* Global Styles */
     body,
     html {
       font-family: Arial, sans-serif;
@@ -17,13 +17,10 @@
       flex-direction: column;
       height: 100vh;
       overflow: hidden;
-      /* Prevent scrolling */
       background-image: url('public/img/5.png');
-      /* Background image for the entire page */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      /* Make the background stay in place when scrolling */
     }
 
     /* Navbar Styling */
@@ -32,7 +29,6 @@
       justify-content: space-between;
       align-items: center;
       background-color: transparent;
-      /* Fully transparent */
       padding: 10px 20px;
       position: fixed;
       top: 0;
@@ -41,7 +37,6 @@
       z-index: 1000;
     }
 
-    /* Logo and Website Name */
     .logo-container {
       display: flex;
       align-items: center;
@@ -57,26 +52,14 @@
       font-size: 29px;
       font-weight: bold;
       color: #000;
-      /* Black text */
     }
 
-    /* Exit Game Button */
     .exit-game {
       display: flex;
       align-items: center;
       gap: 8px;
       cursor: pointer;
       transition: opacity 0.3s ease;
-    }
-
-    .exit-game:hover {
-      opacity: 0.8;
-    }
-
-    .exit-text {
-      font-size: 22px;
-      color: #000;
-      /* Black text */
     }
 
     .exit-game a {
@@ -92,6 +75,17 @@
       /* Add spacing between text and icon */
     }
 
+
+
+    .exit-game:hover {
+      opacity: 0.8;
+    }
+
+    .exit-text {
+      font-size: 22px;
+      color: #000;
+    }
+
     .exit-icon {
       width: 40px;
       height: 40px;
@@ -102,11 +96,9 @@
       display: flex;
       flex-direction: row;
       margin-top: 60px;
-      /* Add margin to offset the fixed top menu */
       width: 100%;
       padding: 20px;
       overflow: hidden;
-      /* Prevent overflow */
     }
 
     /* Left Column (Categories Grid) */
@@ -121,9 +113,6 @@
     .category-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      /* 3 columns for categories */
-      grid-template-rows: repeat(2, 1fr);
-      /* 2 rows for categories */
       gap: 20px;
     }
 
@@ -142,7 +131,6 @@
       box-sizing: border-box;
     }
 
-    /* Category Image Styling */
     .category img {
       width: 100%;
       height: 200px;
@@ -150,11 +138,10 @@
       border-radius: 10px;
     }
 
-    /* Levels (100, 300, 600) Buttons Styling */
+    /* Levels Buttons Styling */
     .levels {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      /* 3 buttons in each row */
       gap: 10px;
       width: 100%;
       margin-top: 10px;
@@ -178,40 +165,34 @@
     /* Team Score Section Styling */
     .team-score {
       display: flex;
+      justify-content: center;
+      /* Center horizontally */
       justify-content: space-between;
       margin-top: 15px;
       width: 100%;
-      padding: 0 380px;
-      /* Add padding to avoid content touching the sides */
+      padding: 0 20px;
     }
 
-    /* Team Styling */
     .team {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      /* Center vertically */
+      justify-content: center;
+      /* Center horizontally */
       font-size: 18px;
       width: 50%;
-      /* Ensure equal width for both teams */
       gap: 15px;
-      /* Space between score and team name */
     }
 
-    /* Team Name Styling */
     .team-name {
       font-size: 22px;
       font-weight: bold;
       color: #080808;
-      /* Dark color for the team name */
       text-transform: uppercase;
-      /* Uppercase text for the team name */
       letter-spacing: 2px;
-      /* Space between letters */
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-      /* Shadow effect on the text */
     }
 
-    /* Score Styling */
     .score {
       display: flex;
       align-items: center;
@@ -219,7 +200,6 @@
       margin-top: 10px;
     }
 
-    /* Score Button Styling */
     .score-btn {
       background-color: #333;
       color: white;
@@ -236,7 +216,6 @@
       background-color: #f1c0c0;
     }
 
-    /* Score Value Styling */
     .score-value {
       font-size: 24px;
       font-weight: bold;
@@ -245,16 +224,12 @@
 
     button:disabled {
       background-color: gray;
-      /* Change background color to gray */
       color: white;
-      /* Change text color to white */
       cursor: not-allowed;
-      /* Change cursor to show that it's disabled */
     }
 
     .disabled-button {
       opacity: 0.6;
-      /* Optional: make the button look faded */
     }
 
     .modal {
@@ -294,21 +269,109 @@
       background: #dc3545;
       color: white;
     }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .category-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .team-score {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .team {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .category-container {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .logo {
+        width: 60px;
+        height: 50px;
+      }
+
+      .website-name {
+        font-size: 24px;
+      }
+
+      .exit-text {
+        font-size: 18px;
+      }
+
+      .exit-text a {
+        text-decoration: none;
+        /* Remove underline */
+        color: inherit;
+        /* Inherit text color */
+        display: flex;
+        /* Ensure flex layout works */
+        align-items: center;
+        /* Align items vertically */
+        gap: 8px;
+        /* Add spacing between text and icon */
+      }
+
+
+      .exit-icon {
+        width: 30px;
+        height: 30px;
+      }
+
+      .levels button {
+        padding: 15px;
+        font-size: 16px;
+      }
+
+      .team-name {
+        font-size: 18px;
+      }
+
+      .score-value {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .levels {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .category img {
+        height: 150px;
+      }
+
+      .team-name {
+        font-size: 16px;
+      }
+
+      .score-value {
+        font-size: 18px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
   <!-- Top Menu -->
-
   <div class="navbar">
-    <!-- Logo and Website Name -->
     <div class="logo-container">
       <img src="public/img/logo.png" alt="Logo" class="logo">
       <span class="website-name">حلّها!</span>
     </div>
-
-    <!-- Exit Game Button -->
     <div class="exit-game">
       <a href="/" onclick="endGame()">
         <span class="exit-text">إنهاء اللعبة</span>
@@ -417,14 +480,6 @@
     </div>
   </div>
 
-  <div id="winnerModal" class="modal" style="display: none;">
-    <div class="modal-content">
-      <h2 id="winnerMessage"></h2>
-      <button id="returnHome">Return to Home</button>
-      <button id="cancel">Cancel</button>
-    </div>
-  </div>
-
   <!-- Team Score Section -->
   <div class="team-score">
     <div class="team">
@@ -442,6 +497,15 @@
         <button class="score-btn" onclick="updateScore('team2', 'increase')">+</button>
       </div>
       <div class="team-name" id="team2Display"></div>
+    </div>
+  </div>
+
+  <!-- Winner Modal -->
+  <div id="winnerModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2 id="winnerMessage"></h2>
+      <button id="returnHome">Return to Home</button>
+      <button id="cancel">Cancel</button>
     </div>
   </div>
 
@@ -555,14 +619,14 @@
       const params = new URLSearchParams(window.location.search);
 
       // Get Team 1 Name and Team 2 Name
-       team1Name = params.get('team1');
-       team2Name = params.get('team2');
+      team1Name = params.get('team1');
+      team2Name = params.get('team2');
 
       // Alert to check the team names
       //alert(Team 1: ${team1Name}, Team 2: ${team2Name});
 
       // Construct the API URL
-      const apiUrl = `https://hlwh.onrender.com/api/questions?category=${category}&level=${level}`;
+      const apiUrl = `/api/questions?category=${category}&level=${level}`;
 
       // Alert to check the API URL
       // alert(API URL: ${apiUrl});
