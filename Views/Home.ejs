@@ -5,202 +5,316 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>حلّها!</title>
   <style>
-  body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-image: url('public/img/4.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: scroll;
-    background-attachment: fixed;
-  }
+    /* Basic styling (unchanged for big screens) */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('public/img/4.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: scroll;
+      background-attachment: fixed;
+    }
   
-  .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: transparent;
-    z-index: 100;
-  }
+    /* Navbar (unchanged for big screens) */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: transparent;
+      z-index: 100;
+    }
   
-  .navbar a {
-    text-decoration: none;
-    font-size: 18px;
-    padding: 15px 30px;
-    margin: 0 15px;
-    color: black;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
+    .navbar a {
+      text-decoration: none;
+      font-size: 18px;
+      padding: 15px 30px;
+      margin: 0 15px;
+      color: black;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
   
-  .navbar a:hover {
-    color: #efb7ce;
-  }
+    .navbar a:hover {
+      color: #efb7ce;
+    }
   
-  .logo-container {
-    display: flex;
-    align-items: center;
-    margin-right: auto;
-  }
+    /* Logo and Website Name (unchanged for big screens) */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      margin-right: auto;
+    }
   
-  .logo {
-    height: 50px;
-    margin-right: 5px;
-  }
+    .logo {
+      height: 50px;
+      margin-right: 5px;
+    }
   
-  .website-name {
-    font-size: 30px;
-    font-weight: bold;
-    color: #18375d;
-    direction: rtl;
-  }
+    .website-name {
+      font-size: 30px;
+      font-weight: bold;
+      color: #18375d;
+      direction: rtl;
+    }
   
-  .nav-links {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
-  }
+    /* Nav Links (unchanged for big screens) */
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      flex-grow: 1;
+    }
   
-  .spacer {
-    height: 70px;
-  }
+    /* Spacer (unchanged for big screens) */
+    .spacer {
+      height: 70px;
+    }
   
-  .game-image {
-    width: 80%;
-    max-width: 800px;
-    height: auto;
-    margin-bottom: 40px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
+    /* Game Image (unchanged for big screens) */
+    .game-image {
+      width: 80%;
+      max-width: 800px;
+      height: auto;
+      margin-bottom: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
   
-  #aboutus {
-    padding: 3px;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: center;
-    margin-top: auto;
-    width: 100%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 50% 50% 0 0;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
+    /* About Us Section (unchanged for big screens) */
+    #aboutus {
+      padding: 3px;
+      background-color: #f4f4f4;
+      color: #333;
+      text-align: center;
+      margin-top: auto;
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 50% 50% 0 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
   
-  #aboutus h2 {
-    font-size: 22px;
-    color: #18375d;
-    margin-bottom: 10px;
-  }
+    #aboutus h2 {
+      font-size: 22px;
+      color: #18375d;
+      margin-bottom: 10px;
+    }
   
-  #aboutus p {
-    font-size: 14px;
-    line-height: 1.4;
-    margin-bottom: 8px;
-  }
+    #aboutus p {
+      font-size: 14px;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
   
-  #aboutus a {
-    color: #18375d;
-    text-decoration: none;
-  }
+    #aboutus a {
+      color: #18375d;
+      text-decoration: none;
+    }
   
-  #aboutus a:hover {
-    text-decoration: underline;
-  }
+    #aboutus a:hover {
+      text-decoration: underline;
+    }
   
-  .card {
-    width: 100%;
-    max-width: 1200px;
-    margin: 40px auto;
-    background-color: #f4f4f4;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-  }
+    /* Card Section (unchanged for big screens) */
+    .card {
+      width: 100%;
+      max-width: 1200px;
+      margin: 40px auto;
+      background-color: #f4f4f4;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
   
-  .card-content {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-  }
+    .card-content {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
   
-  .card-image {
-    flex: 1;
-    max-width: 50%;
-  }
+    .card-image {
+      flex: 1;
+      max-width: 50%;
+    }
   
-  .card-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
+    .card-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
   
-  .card-text {
-    flex: 2;
-    padding-left: 20px;
-  }
+    .card-text {
+      flex: 2;
+      padding-left: 20px;
+    }
   
-  .card-text h3 {
-    text-align: right;
-    font-size: 25px;
-    color: #18375d;
-    margin-bottom: 10px;
-  }
+    .card-text h3 {
+      text-align: right;
+      font-size: 25px;
+      color: #18375d;
+      margin-bottom: 10px;
+    }
   
-  .card-text p {
-    font-size: 20px;
-    color: #333;
-    line-height: 1.6;
-  }
+    .card-text p {
+      font-size: 20px;
+      color: #333;
+      line-height: 1.6;
+    }
   
-  .game-description {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
+    /* Game Description Section (unchanged for big screens) */
+    .game-description {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
   
-  .game-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 25px;
-  }
+    .game-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 25px;
+    }
   
-  .game-text h3 {
-    font-size: 25px;
-    margin-bottom: 20px;
-    color: #2c3e50;
-  }
+    .game-text h3 {
+      font-size: 25px;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
   
-  .game-text p {
-    font-size: 17px;
-    line-height: 1.8;
-    color: #34495e;
-    margin-bottom: 15px;
-  }
+    .game-text p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #34495e;
+      margin-bottom: 15px;
+    }
   
-  .game-text strong {
-    color: #e74c3c;
-  }
-</style>
+    .game-text strong {
+      color: #e74c3c;
+    }
+  
+    /* Mobile Responsiveness (only for small screens) */
+    @media only screen and (max-width: 768px) {
+      /* Navbar adjustments for mobile */
+      .navbar {
+        padding: 10px 5%; /* Reduced padding for mobile */
+      }
+  
+      .navbar a {
+        font-size: 14px; /* Smaller font size for mobile */
+        padding: 8px 12px; /* Reduced padding for mobile */
+      }
+  
+      .logo {
+        height: 40px; /* Smaller logo for mobile */
+      }
+  
+      .website-name {
+        font-size: 24px; /* Smaller font size for mobile */
+      }
+  
+      /* Game Image adjustments for mobile */
+      .game-image {
+        width: 90%; /* Adjusted width for mobile */
+        margin-bottom: 20px; /* Reduced margin for mobile */
+      }
+  
+      /* Card Section adjustments for mobile */
+      .card-content {
+        flex-direction: column; /* Stack image and text vertically */
+        padding: 15px; /* Reduced padding for mobile */
+      }
+  
+      .card-image {
+        max-width: 100%; /* Full width for mobile */
+        margin-bottom: 15px; /* Space between image and text */
+      }
+  
+      .card-text {
+        padding-left: 0; /* Remove left padding for mobile */
+        text-align: center; /* Center text for mobile */
+      }
+  
+      .card-text h3 {
+        text-align: center; /* Center heading for mobile */
+        font-size: 20px; /* Smaller font size for mobile */
+      }
+  
+      .card-text p {
+        font-size: 16px; /* Smaller font size for mobile */
+      }
+  
+      /* Game Description adjustments for mobile */
+      .game-description {
+        padding: 20px; /* Reduced padding for mobile */
+        margin: 30px auto; /* Adjusted margin for mobile */
+      }
+  
+      .game-text h3 {
+        font-size: 20px; /* Smaller font size for mobile */
+      }
+  
+      .game-text p {
+        font-size: 14px; /* Smaller font size for mobile */
+      }
+    }
+  
+    @media only screen and (max-width: 480px) {
+      /* Navbar adjustments for very small screens */
+      .navbar a {
+        font-size: 12px; /* Even smaller font size for very small screens */
+        padding: 6px 10px; /* Further reduced padding */
+      }
+  
+      .logo {
+        height: 35px; /* Even smaller logo for very small screens */
+      }
+  
+      .website-name {
+        font-size: 20px; /* Even smaller font size for very small screens */
+      }
+  
+      /* Game Image adjustments for very small screens */
+      .game-image {
+        width: 95%; /* Adjusted width for very small screens */
+      }
+  
+      /* Card Section adjustments for very small screens */
+      .card-text h3 {
+        font-size: 18px; /* Even smaller font size for very small screens */
+      }
+  
+      .card-text p {
+        font-size: 14px; /* Even smaller font size for very small screens */
+      }
+  
+      /* Game Description adjustments for very small screens */
+      .game-text h3 {
+        font-size: 18px; /* Even smaller font size for very small screens */
+      }
+  
+      .game-text p {
+        font-size: 12px; /* Even smaller font size for very small screens */
+      }
+    }
+  </style>
 </head>
 <body>
 
