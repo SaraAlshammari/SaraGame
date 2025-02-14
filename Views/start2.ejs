@@ -5,270 +5,270 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Team Setup</title>
   <style>
-    /* Basic styling */
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-image: url('public/img/4.png'); /* Background image for the entire page */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: scroll; /* Enable vertical scrolling */
-  background-attachment: fixed; /* Keeps the background image fixed while scrolling */
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Space between left (logo) and center (menu) */
-  padding: 20px 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: transparent; /* Fully transparent background */
-  z-index: 100;
-}
-
-.navbar a {
-  text-decoration: none;
-  font-size: 18px;
-  padding: 15px 30px;
-  margin: 0 15px;
-  color: black;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.navbar a:hover {
-  color: #efb7ce; /* Change text color to pink on hover */
-}
-
-/* Logo and Website Name on the Left */
-.logo-container {
-  display: flex;
-  align-items: center;
-  margin-right: auto; /* Align logo and name to the far left */
-}
-
-.logo {
-  height: 50px; /* Adjust the size of the logo */
-  margin-right: 5px; /* Space between logo and text */
-}
-
-.website-name {
-  font-size: 30px; /* Adjust font size */
-  font-weight: bold; /* Make it bold */
-  color: #18375d; /* Blue color for the website name */
-  direction: rtl; /* Proper rendering for Arabic text */
-}
-
-/* Center the Navigation Links */
-.nav-links {
-  display: flex;
-  justify-content: center; /* Align links in the center */
-  flex-grow: 1; /* Ensure they take up remaining space */
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column; /* Stack the logo and menu vertically on small screens */
-    text-align: center; /* Center align the text */
-    padding: 10px 0;
+   /* Basic styling */
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('public/img/4.png'); /* Background image for the entire page */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll; /* Enable vertical scrolling */
+    background-attachment: fixed; /* Keeps the background image fixed while scrolling */
   }
 
-  .nav-links {
-    flex-direction: column; /* Stack the nav links vertically */
-    width: 100%; /* Make nav links take full width */
-    padding-top: 10px;
+  /* Navbar */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between left (logo) and center (menu) */
+    padding: 20px 5%; /* Add padding to the sides */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent; /* Fully transparent background */
+    z-index: 100;
+    box-sizing: border-box; /* Ensure padding is included in width */
   }
 
   .navbar a {
-    padding: 10px 20px; /* Smaller padding for mobile */
-    margin: 5px 0; /* Reduce margin for mobile */
-    font-size: 16px; /* Smaller font size for mobile */
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px; /* Reduced padding for better spacing */
+    margin: 0 10px; /* Reduced margin */
+    color: black;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .navbar a:hover {
+    color: #efb7ce; /* Change text color to pink on hover */
+  }
+
+  /* Logo and Website Name on the Left */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Align logo and name to the far left */
   }
 
   .logo {
-    height: 40px; /* Reduce logo size on mobile */
+    height: 50px; /* Adjust the size of the logo */
+    margin-right: 10px; /* Space between logo and text */
   }
 
   .website-name {
-    font-size: 24px; /* Smaller website name size on mobile */
+    font-size: 24px; /* Adjusted font size */
+    font-weight: bold; /* Make it bold */
+    color: #18375d; /* Blue color for the website name */
+    direction: rtl; /* Proper rendering for Arabic text */
   }
-}
 
-/* Team setup styling */
-.team-setup {
-  background-color: #f9f9f9;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-  margin-top: 80px;
-}
+  /* Center the Navigation Links */
+  .nav-links {
+    display: flex;
+    justify-content: center; /* Align links in the center */
+    flex-grow: 1; /* Ensure they take up remaining space */
+  }
 
-/* Labels */
-.team-name-label {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 8px;
-  color: #555;
-  text-align: right;
-}
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column; /* Stack the logo and menu vertically on small screens */
+      text-align: center; /* Center align the text */
+      padding: 10px 0;
+    }
 
-/* Input Fields */
-.team-name-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  text-align: right;
-  box-sizing: border-box;
-}
+    .nav-links {
+      flex-direction: column; /* Stack the nav links vertically */
+      width: 100%; /* Make nav links take full width */
+      padding-top: 10px;
+    }
 
-.team-name-input::placeholder {
-  color: #999;
-}
+    .navbar a {
+      padding: 8px 15px; /* Smaller padding for mobile */
+      margin: 5px 0; /* Reduce margin for mobile */
+      font-size: 16px; /* Smaller font size for mobile */
+    }
 
-/* Players Control */
-.players-control {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
+    .logo {
+      height: 40px; /* Reduce logo size on mobile */
+    }
 
-.players-input {
-  width: 50px;
-  padding: 10px;
-  margin: 0 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  text-align: center;
-  background-color: #fff;
-  color: #333;
-}
+    .website-name {
+      font-size: 20px; /* Smaller website name size on mobile */
+    }
+  }
 
-.btn-player {
-  padding: 10px 15px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  background-color: #629fe0;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  /* Team setup styling */
+  .team-setup {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Adjusted width for smaller screens */
+    max-width: 400px;
+    text-align: center;
+    margin-top: 100px; /* Adjusted margin for fixed navbar */
+  }
 
-.btn-player:hover {
-  background-color: #0056b3;
-}
+  /* Labels */
+  .team-name-label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #555;
+    text-align: right;
+  }
 
-/* Proceed Button */
-.btn-proceed {
-  width: 100%;
-  padding: 12px;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
-  background-color: #74b683;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  /* Input Fields */
+  .team-name-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: right;
+    box-sizing: border-box;
+  }
 
-.btn-proceed:hover {
-  background-color: #218838;
-}
+  .team-name-input::placeholder {
+    color: #999;
+  }
 
-/* About Us section */
-#aboutus {
-  padding: 3px; /* Reduced padding for smaller height */
-  background-color: #f4f4f4; /* Light background color */
-  color: #333; /* Dark text for visibility */
-  text-align: center; /* Center align text */
-  margin-top: auto;
-  width: 100%;
-  max-width: 1200px; /* Max width for content */
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 50% 50% 0 0; /* Top half circle effect */
-  position: relative;
-  overflow: hidden; /* Hide overflow for clean edges */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
-}
+  /* Players Control */
+  .players-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
 
-#aboutus h2 {
-  font-size: 22px; /* Smaller heading font size */
-  color: #18375d; /* Color for headings */
-  margin-bottom: 10px; /* Reduced spacing */
-}
+  .players-input {
+    width: 50px;
+    padding: 10px;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    background-color: #fff;
+    color: #333;
+  }
 
-#aboutus p {
-  font-size: 14px; /* Smaller font size for paragraphs */
-  line-height: 1.4; /* Reduced line height */
-  margin-bottom: 8px; /* Reduced spacing between paragraphs */
-}
+  .btn-player {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #629fe0;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
-#aboutus a {
-  color: #18375d; /* Dark blue color for email link */
-  text-decoration: none;
-}
+  .btn-player:hover {
+    background-color: #0056b3;
+  }
 
-#aboutus a:hover {
-  text-decoration: underline; /* Hover effect for the email link */
-}
+  /* Proceed Button */
+  .btn-proceed {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #74b683;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
-/* Base Button Styles */
+  .btn-proceed:hover {
+    background-color: #218838;
+  }
 
-/* Secondary Button (Light Green) */
-.button-secondary {
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  width: 100%;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  color: #333; /* Dark text for contrast */
-  background-color: #c7e287; /* Light green */
-}
+  /* About Us section */
+  #aboutus {
+    padding: 20px 10px; /* Adjusted padding for smaller screens */
+    background-color: #f4f4f4; /* Light background color */
+    color: #333; /* Dark text for visibility */
+    text-align: center; /* Center align text */
+    margin-top: auto;
+    width: 100%;
+    max-width: 1200px; /* Max width for content */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50% 50% 0 0; /* Top half circle effect */
+    position: relative;
+    overflow: hidden; /* Hide overflow for clean edges */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
+  }
 
-.button-secondary:hover {
-  background-color: #a5ce69; /* Slightly darker shade */
-  transform: scale(1.05); /* Slight zoom effect */
-}
+  #aboutus h2 {
+    font-size: 22px; /* Smaller heading font size */
+    color: #18375d; /* Color for headings */
+    margin-bottom: 10px; /* Reduced spacing */
+  }
 
-/* Proceed Button */
-#proceedButton {
-  display: none;
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 18px;
-  background-color: #bdc9d8; /* Light blue-gray */
-  color: #333; /* Dark text for contrast */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-}
+  #aboutus p {
+    font-size: 14px; /* Smaller font size for paragraphs */
+    line-height: 1.4; /* Reduced line height */
+    margin-bottom: 8px; /* Reduced spacing between paragraphs */
+  }
 
-#proceedButton:hover {
-  background-color: #a8b6c7; /* Slightly darker shade */
-  transform: scale(1.05); /* Slight zoom effect */
-}
+  #aboutus a {
+    color: #18375d; /* Dark blue color for email link */
+    text-decoration: none;
+  }
+
+  #aboutus a:hover {
+    text-decoration: underline; /* Hover effect for the email link */
+  }
+
+  /* Base Button Styles */
+  .button-secondary {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    color: #333; /* Dark text for contrast */
+    background-color: #c7e287; /* Light green */
+  }
+
+  .button-secondary:hover {
+    background-color: #a5ce69; /* Slightly darker shade */
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+
+  /* Proceed Button */
+  #proceedButton {
+    display: none;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #bdc9d8; /* Light blue-gray */
+    color: #333; /* Dark text for contrast */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  #proceedButton:hover {
+    background-color: #a8b6c7; /* Slightly darker shade */
+    transform: scale(1.05); /* Slight zoom effect */
+  }
   </style>
 </head>
 <body>
