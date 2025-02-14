@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Team Setup</title>
   <style>
-   /* Basic styling */
+  /* Basic styling (unchanged for big screens) */
   body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -22,7 +22,7 @@
     background-attachment: fixed; /* Keeps the background image fixed while scrolling */
   }
 
-  /* Navbar */
+  /* Navbar (unchanged for big screens) */
   .navbar {
     display: flex;
     align-items: center;
@@ -51,7 +51,7 @@
     color: #efb7ce; /* Change text color to pink on hover */
   }
 
-  /* Logo and Website Name on the Left */
+  /* Logo and Website Name on the Left (unchanged for big screens) */
   .logo-container {
     display: flex;
     align-items: center;
@@ -70,35 +70,28 @@
     direction: rtl; /* Proper rendering for Arabic text */
   }
 
-  /* Center the Navigation Links */
+  /* Center the Navigation Links (unchanged for big screens) */
   .nav-links {
     display: flex;
     justify-content: center; /* Align links in the center */
     flex-grow: 1; /* Ensure they take up remaining space */
   }
 
-  /* Mobile responsiveness */
+  /* Mobile responsiveness (only for small screens) */
   @media (max-width: 768px) {
+    /* Navbar adjustments for mobile */
     .navbar {
-      flex-direction: column; /* Stack the logo and menu vertically on small screens */
-      text-align: center; /* Center align the text */
-      padding: 10px 0;
-    }
-
-    .nav-links {
-      flex-direction: column; /* Stack the nav links vertically */
-      width: 100%; /* Make nav links take full width */
-      padding-top: 10px;
+      padding: 10px 5%; /* Reduced padding for mobile */
     }
 
     .navbar a {
-      padding: 8px 15px; /* Smaller padding for mobile */
-      margin: 5px 0; /* Reduce margin for mobile */
-      font-size: 16px; /* Smaller font size for mobile */
+      font-size: 14px; /* Smaller font size for mobile */
+      padding: 8px 12px; /* Reduced padding for mobile */
+      margin: 0 5px; /* Reduced margin for mobile */
     }
 
     .logo {
-      height: 40px; /* Reduce logo size on mobile */
+      height: 40px; /* Smaller logo for mobile */
     }
 
     .website-name {
@@ -106,7 +99,24 @@
     }
   }
 
-  /* Team setup styling */
+  @media (max-width: 480px) {
+    /* Navbar adjustments for very small screens */
+    .navbar a {
+      font-size: 12px; /* Even smaller font size for very small screens */
+      padding: 6px 10px; /* Further reduced padding */
+      margin: 0 3px; /* Further reduced margin */
+    }
+
+    .logo {
+      height: 35px; /* Even smaller logo for very small screens */
+    }
+
+    .website-name {
+      font-size: 18px; /* Even smaller font size for very small screens */
+    }
+  }
+
+  /* Team setup styling (unchanged for big screens) */
   .team-setup {
     background-color: #f9f9f9;
     padding: 20px;
@@ -118,7 +128,7 @@
     margin-top: 100px; /* Adjusted margin for fixed navbar */
   }
 
-  /* Labels */
+  /* Labels (unchanged for big screens) */
   .team-name-label {
     display: block;
     font-size: 16px;
@@ -127,7 +137,7 @@
     text-align: right;
   }
 
-  /* Input Fields */
+  /* Input Fields (unchanged for big screens) */
   .team-name-input {
     width: 100%;
     padding: 10px;
@@ -143,7 +153,7 @@
     color: #999;
   }
 
-  /* Players Control */
+  /* Players Control (unchanged for big screens) */
   .players-control {
     display: flex;
     justify-content: center;
@@ -178,7 +188,7 @@
     background-color: #0056b3;
   }
 
-  /* Proceed Button */
+  /* Proceed Button (unchanged for big screens) */
   .btn-proceed {
     width: 100%;
     padding: 12px;
@@ -195,7 +205,7 @@
     background-color: #218838;
   }
 
-  /* About Us section */
+  /* About Us section (unchanged for big screens) */
   #aboutus {
     padding: 20px 10px; /* Adjusted padding for smaller screens */
     background-color: #f4f4f4; /* Light background color */
@@ -233,7 +243,7 @@
     text-decoration: underline; /* Hover effect for the email link */
   }
 
-  /* Base Button Styles */
+  /* Base Button Styles (unchanged for big screens) */
   .button-secondary {
     padding: 10px 20px;
     font-size: 16px;
@@ -251,7 +261,7 @@
     transform: scale(1.05); /* Slight zoom effect */
   }
 
-  /* Proceed Button */
+  /* Proceed Button (unchanged for big screens) */
   #proceedButton {
     display: none;
     margin-top: 20px;
@@ -269,7 +279,7 @@
     background-color: #a8b6c7; /* Slightly darker shade */
     transform: scale(1.05); /* Slight zoom effect */
   }
-  </style>
+</style>
 </head>
 <body>
 
