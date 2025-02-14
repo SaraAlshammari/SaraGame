@@ -22,7 +22,7 @@
       background-position: center;
       background-repeat: no-repeat;
     }
-
+  
     /* Navbar Styling */
     .navbar {
       display: flex;
@@ -36,24 +36,24 @@
       right: 0;
       z-index: 1000;
     }
-
+  
     .logo-container {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-
+  
     .logo {
       width: 80px;
       height: 70px;
     }
-
+  
     .website-name {
       font-size: 29px;
       font-weight: bold;
       color: #000;
     }
-
+  
     .exit-game {
       display: flex;
       align-items: center;
@@ -61,36 +61,29 @@
       cursor: pointer;
       transition: opacity 0.3s ease;
     }
-
+  
     .exit-game a {
       text-decoration: none;
-      /* Remove underline */
       color: inherit;
-      /* Inherit text color */
       display: flex;
-      /* Ensure flex layout works */
       align-items: center;
-      /* Align items vertically */
       gap: 8px;
-      /* Add spacing between text and icon */
     }
-
-
-
+  
     .exit-game:hover {
       opacity: 0.8;
     }
-
+  
     .exit-text {
       font-size: 22px;
       color: #000;
     }
-
+  
     .exit-icon {
       width: 40px;
       height: 40px;
     }
-
+  
     /* Main Content Section */
     .main-container {
       display: flex;
@@ -98,9 +91,9 @@
       margin-top: 60px;
       width: 100%;
       padding: 20px;
-      overflow: hidden;
+      overflow-y: auto; /* Enable vertical scrolling */
     }
-
+  
     /* Left Column (Categories Grid) */
     .left-column {
       display: flex;
@@ -108,14 +101,14 @@
       flex: 3;
       margin-right: 20px;
     }
-
+  
     /* Category Grid Layout */
     .category-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
-
+  
     /* Category Card Styling */
     .category {
       background-color: #fff;
@@ -130,14 +123,14 @@
       padding: 10px;
       box-sizing: border-box;
     }
-
+  
     .category img {
       width: 100%;
       height: 200px;
       object-fit: cover;
       border-radius: 10px;
     }
-
+  
     /* Levels Buttons Styling */
     .levels {
       display: grid;
@@ -146,7 +139,7 @@
       width: 100%;
       margin-top: 10px;
     }
-
+  
     .levels button {
       background-color: #fff;
       padding: 20px;
@@ -157,33 +150,29 @@
       transition: background-color 0.3s ease;
       font-weight: bold;
     }
-
+  
     .levels button:hover {
       background-color: #f1c0c0;
     }
-
+  
     /* Team Score Section Styling */
     .team-score {
       display: flex;
-      justify-content: center;
-      /* Center horizontally */
       justify-content: space-between;
       margin-top: 15px;
       width: 100%;
       padding: 0 20px;
     }
-
+  
     .team {
       display: flex;
       align-items: center;
-      /* Center vertically */
       justify-content: center;
-      /* Center horizontally */
       font-size: 18px;
       width: 50%;
       gap: 15px;
     }
-
+  
     .team-name {
       font-size: 22px;
       font-weight: bold;
@@ -192,14 +181,14 @@
       letter-spacing: 2px;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     }
-
+  
     .score {
       display: flex;
       align-items: center;
       gap: 10px;
       margin-top: 10px;
     }
-
+  
     .score-btn {
       background-color: #333;
       color: white;
@@ -211,27 +200,27 @@
       transition: background-color 0.3s ease;
       margin-bottom: 10px;
     }
-
+  
     .score-btn:hover {
       background-color: #f1c0c0;
     }
-
+  
     .score-value {
       font-size: 24px;
       font-weight: bold;
       margin-bottom: 10px;
     }
-
+  
     button:disabled {
       background-color: gray;
       color: white;
       cursor: not-allowed;
     }
-
+  
     .disabled-button {
       opacity: 0.6;
     }
-
+  
     .modal {
       position: fixed;
       top: 0;
@@ -243,7 +232,7 @@
       align-items: center;
       justify-content: center;
     }
-
+  
     .modal-content {
       background: white;
       padding: 20px;
@@ -251,7 +240,7 @@
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
-
+  
     .modal-content button {
       margin: 10px;
       padding: 10px 20px;
@@ -259,115 +248,182 @@
       border-radius: 4px;
       cursor: pointer;
     }
-
+  
     #returnHome {
       background: #28a745;
       color: white;
     }
-
+  
     #cancel {
       background: #dc3545;
       color: white;
     }
-
-    /* Responsive Design */
-    @media (max-width: 1200px) {
-      .category-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .team-score {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-      }
-
-      .team {
-        width: 100%;
-        justify-content: center;
-      }
+  
+    /* Landscape Prompt */
+    .landscape-prompt {
+      display: none; /* Hidden by default */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      font-size: 24px;
+      text-align: center;
+      padding-top: 20%;
+      z-index: 1000;
     }
-
+  
+    /* Responsive Design */
     @media (max-width: 768px) {
-      .category-container {
-        grid-template-columns: repeat(1, 1fr);
-      }
-
+      /* Navbar stays in one line */
       .navbar {
-        flex-direction: column;
-        gap: 10px;
+        padding: 10px;
       }
-
+  
+      /* Reduce logo size */
       .logo {
         width: 60px;
         height: 50px;
       }
-
+  
+      /* Reduce website name font size */
       .website-name {
         font-size: 24px;
       }
-
+  
+      /* Reduce exit text and icon size */
       .exit-text {
         font-size: 18px;
       }
-
-      .exit-text a {
-        text-decoration: none;
-        /* Remove underline */
-        color: inherit;
-        /* Inherit text color */
-        display: flex;
-        /* Ensure flex layout works */
-        align-items: center;
-        /* Align items vertically */
-        gap: 8px;
-        /* Add spacing between text and icon */
-      }
-
-
+  
       .exit-icon {
         width: 30px;
         height: 30px;
       }
-
+  
+      /* Adjust the grid layout for categories */
+      .category-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+      }
+  
+      /* Adjust levels button padding and font size */
       .levels button {
         padding: 15px;
         font-size: 16px;
       }
-
+  
+      /* Team score stays in one line */
+      .team-score {
+        flex-direction: row; /* Keep team scores in one line */
+        gap: 10px;
+        padding: 0 10px;
+      }
+  
+      /* Adjust team name font size */
       .team-name {
         font-size: 18px;
       }
-
+  
+      /* Adjust score value font size */
       .score-value {
         font-size: 20px;
       }
     }
-
+  
     @media (max-width: 480px) {
-      .levels {
-        display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+      /* Navbar stays in one line */
+      .navbar {
+        padding: 5px 10px; /* Further reduce padding */
       }
-
+  
+      /* Reduce logo size */
+      .logo {
+        width: 50px;
+        height: 40px;
+      }
+  
+      /* Reduce website name font size */
+      .website-name {
+        font-size: 20px;
+      }
+  
+      /* Reduce exit text and icon size */
+      .exit-text {
+        font-size: 16px;
+      }
+  
+      .exit-icon {
+        width: 25px;
+        height: 25px;
+      }
+  
+      /* Adjust the grid layout for categories */
+      .category-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+        gap: 10px; /* Reduce gap between cards */
+      }
+  
+      /* Reduce category image height */
       .category img {
         height: 150px;
       }
-
+  
+      /* Adjust levels grid for very small screens */
+      .levels {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for levels */
+      }
+  
+      /* Team score stays in one line */
+      .team-score {
+        flex-direction: row; /* Keep team scores in one line */
+        gap: 5px; /* Reduce gap between teams */
+      }
+  
+      /* Adjust team name font size */
       .team-name {
         font-size: 16px;
       }
-
+  
+      /* Adjust score value font size */
       .score-value {
         font-size: 18px;
+      }
+  
+      /* Show landscape prompt for very small screens in portrait mode */
+      @media (orientation: portrait) {
+        .landscape-prompt {
+          display: block; /* Show the landscape prompt */
+        }
+  
+        .main-container {
+          display: none; /* Hide main content in portrait mode */
+        }
+      }
+  
+      /* Adjust layout for landscape mode */
+      @media (orientation: landscape) {
+        .landscape-prompt {
+          display: none; /* Hide the landscape prompt */
+        }
+  
+        .main-container {
+          display: flex; /* Show main content in landscape mode */
+        }
+  
+        .category-container {
+          grid-template-columns: repeat(3, 1fr); /* 3 columns in landscape mode */
+        }
       }
     }
   </style>
 </head>
 
 <body>
-
+<div class="landscape-prompt">
+    Please rotate your device to landscape mode for a better experience.
+  </div>
   <!-- Top Menu -->
   <div class="navbar">
     <div class="logo-container">
@@ -512,6 +568,22 @@
   </div>
 
   <script>
+// Function to check screen orientation
+  function checkOrientation() {
+    const landscapePrompt = document.querySelector('.landscape-prompt');
+    const mainContainer = document.querySelector('.main-container');
+    if (window.innerWidth <= 480 && window.innerHeight > window.innerWidth) {
+      landscapePrompt.style.display = 'block'; // Show prompt in portrait mode
+      mainContainer.style.display = 'none'; // Hide main content in portrait mode
+    } else {
+      landscapePrompt.style.display = 'none'; // Hide prompt in landscape mode
+      mainContainer.style.display = 'flex'; // Show main content in landscape mode
+    }
+  }
+
+  // Check orientation on page load and resize
+  window.addEventListener('load', checkOrientation);
+  window.addEventListener('resize', checkOrientation);
     // Declare categories in the global scope
     let category1, category2, category3, category4, category5, category6;
     let score1;
