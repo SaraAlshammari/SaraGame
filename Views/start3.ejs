@@ -395,20 +395,12 @@
       .landscape-prompt {
         display: block; /* Show the landscape prompt */
       }
-
-      .main-container {
-        display: none; /* Hide main content in portrait mode */
-      }
     }
 
     /* Adjust layout for landscape mode */
     @media (orientation: landscape) {
       .landscape-prompt {
         display: none; /* Hide the landscape prompt */
-      }
-
-      .main-container {
-        display: flex; /* Show main content in landscape mode */
       }
 
       .category-container {
@@ -568,13 +560,10 @@
 // Function to check screen orientation
   function checkOrientation() {
     const landscapePrompt = document.querySelector('.landscape-prompt');
-    const mainContainer = document.querySelector('.main-container');
     if (window.innerWidth <= 480 && window.innerHeight > window.innerWidth) {
       landscapePrompt.style.display = 'block'; // Show prompt in portrait mode
-      mainContainer.style.display = 'none'; // Hide main content in portrait mode
     } else {
       landscapePrompt.style.display = 'none'; // Hide prompt in landscape mode
-      mainContainer.style.display = 'flex'; // Show main content in landscape mode
     }
   }
 
