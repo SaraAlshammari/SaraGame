@@ -6,194 +6,210 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game Question</title>
   <style>
-   /* Prevent scrolling on the entire page */
-   body, html {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      overflow: hidden; /* Prevent scrolling */
-      background-image: url('public/img/6.png'); /* Background image for the entire page */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat; /* Make the background stay in place when scrolling */
-    }
- /* Navbar Styling */
- .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: transparent; /* Fully transparent */
-  padding: 10px 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
+  /* Prevent scrolling on the entire page */
+  body,
+  html {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrolling */
+    background-image: url('public/img/6.png'); /* Background image for the entire page */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Make the background stay in place when scrolling */
+  }
 
-/* Logo and Website Name */
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+  /* Navbar Styling */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent; /* Fully transparent */
+    padding: 10px 20px;
+    position: fixed; /* Fixed at the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 80px; /* Fixed height for navbar */
+  }
 
-.logo {
-  width: 80px;
-  height: 70px;
-}
+  /* Logo and Website Name */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-.website-name {
-  font-size: 29px;
-  font-weight: bold;
-  color: #000; /* Black text */
-}
+  .logo {
+    width: 80px;
+    height: 70px;
+  }
 
-/* Exit Game Button */
-.exit-game {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-}
+  .website-name {
+    font-size: 29px;
+    font-weight: bold;
+    color: #000; /* Black text */
+  }
 
-.exit-game:hover {
-  opacity: 0.8;
-}
+  /* Exit Game Button */
+  .exit-game {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
 
-.exit-text {
-  font-size: 22px;
-  color: #000; /* Black text */
-}
+  .exit-game:hover {
+    opacity: 0.8;
+  }
 
-.exit-game a {
-  text-decoration: none; /* Remove underline */
-  color: inherit; /* Inherit text color */
-  display: flex; /* Ensure flex layout works */
-  align-items: center; /* Align items vertically */
-  gap: 8px; /* Add spacing between text and icon */
-}
-.exit-icon {
-  width: 40px;
-  height: 40px;
-}
+  .exit-text {
+    font-size: 22px;
+    color: #000; /* Black text */
+  }
 
-    .main-container {
-      display: flex;
-      flex-direction: row;
-      margin-top: 60px;
-      width: 100%;
+  .exit-game a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+    display: flex; /* Ensure flex layout works */
+    align-items: center; /* Align items vertically */
+    gap: 8px; /* Add spacing between text and icon */
+  }
 
-      padding: 20px;
-      justify-content: center;
-      align-items: center;
-      flex-grow: 1;
-    }
+  .exit-icon {
+    width: 40px;
+    height: 40px;
+  }
 
-    .question-card {
-      background-color: rgba(255, 255, 255, 0.959);
-      /* Semi-transparent white background */
-      width: 60%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      padding: 20px;
-      box-sizing: border-box;
-    }
+  /* Main Content Section */
+  .main-container {
+    display: flex;
+    flex-direction: row; /* Align children side by side */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-top: 80px; /* Add margin to account for fixed navbar */
+    height: calc(100vh - 80px); /* Adjust height to account for navbar */
+    width: 100%; /* Take up the full width */
+    gap: 20px; /* Add spacing between question card and team names */
+    padding: 20px;
+    box-sizing: border-box;
+  }
 
-    .question {
-      font-size: 24px;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 20px;
-    }
+  /* Question Card */
+  .question-card {
+    background-color: rgba(255, 255, 255, 0.959); /* Semi-transparent white background */
+    width: 70%; /* Larger width for question card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    box-sizing: border-box;
+  }
 
-    .next-btn {
-      display: block;
-      margin: 20px auto;
-      padding: 10px 20px;
-      width: 20%;
-  font-size: 25px;
-  border: none;
-  border-radius: 9px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  color: #ffffff; /* Dark text for contrast */
-  background-color: #86a4c9; 
-    }
+  /* Question Styling */
+  .question {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-    .next-btn:hover {
-      background-color: #5c83b3; /* Slightly darker shade */
-  transform: scale(1.05);
-    }
+  /* Next Button Styling */
+  .next-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    width: 20%;
+    font-size: 25px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    color: #ffffff; /* Dark text for contrast */
+    background-color: #86a4c9;
+  }
 
-    .team-name-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 300px;
-      margin-left: 35px;
-    }
+  .next-btn:hover {
+    background-color: #5c83b3; /* Slightly darker shade */
+    transform: scale(1.05);
+  }
 
-    .team-box {
-      width: 100%;
-      background-color: #4e62b9;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 30px;
-      cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
+  /* Team Name Container */
+  .team-name-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%; /* Smaller width for team name container */
+    margin-left: 20px; /* Reduced margin for mobile */
+  }
 
-    .team-box.active {
-      background-color: #c4e17f;
-      /* Highlight color */
-      transform: scale(1.05);
-    }
+  /* Team Box */
+  .team-box {
+    width: 100%;
+    background-color: #4e62b9;
+    padding: 15px; /* Reduced padding for mobile */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Reduced margin for mobile */
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
 
-    .team-name {
-      font-size: 22px;
-      font-weight: bold;
-      color: #000000;
-    }
+  .team-box.active {
+    background-color: #c4e17f; /* Highlight color */
+    transform: scale(1.05);
+  }
 
-    #answer-container img,
-    #answer-container video {
-      width: 100%;
-      max-height: 300px;
-      border-radius: 10px;
-      margin: 10px 0;
-    }
+  /* Team Name */
+  .team-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: #000000;
+  }
 
-    .team-name-text {
-      font-size: 1.5em;
-      color: #00796b;
-    }
+  /* Answer Container */
+  #answer-container img,
+  #answer-container video {
+    width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
 
-    #team1Points,
-    #team2Points {
-      font-size: 1.4em;
-      color: #d32f2f;
-    }
+  /* Team Name Text */
+  .team-name-text {
+    font-size: 1.5em;
+    color: #00796b;
+  }
 
-    .active {
-      background-color: #ffe082;
-      border-color: #ffca28;
-    }
-    #note-text {
+  /* Team Points */
+  #team1Points,
+  #team2Points {
+    font-size: 1.4em;
+    color: #d32f2f;
+  }
+
+  /* Active Team Box */
+  .active {
+    background-color: #ffe082;
+    border-color: #ffca28;
+  }
+
+  /* Note Text */
+  #note-text {
     font-size: 16px;
     color: #333;
     background-color: #f1f1f1;
@@ -202,7 +218,87 @@
     margin: 10px 0;
     font-family: Arial, sans-serif;
   }
-  </style>
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    /* Adjust navbar for mobile */
+    .navbar {
+      padding: 10px;
+    }
+
+    .logo {
+      width: 60px;
+      height: 50px;
+    }
+
+    .website-name {
+      font-size: 24px;
+    }
+
+    .exit-text {
+      font-size: 18px;
+    }
+
+    .exit-icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* Adjust main container for mobile */
+    .main-container {
+      margin-top: 80px; /* Add margin to account for fixed navbar */
+      height: calc(100vh - 80px); /* Adjust height to account for navbar */
+      gap: 10px; /* Reduce gap between elements */
+      padding: 10px;
+    }
+
+    /* Adjust question card for mobile */
+    .question-card {
+      width: 70%; /* Keep larger width for question card */
+      padding: 15px;
+    }
+
+    .question {
+      font-size: 20px; /* Smaller font size for mobile */
+    }
+
+    .next-btn {
+      width: 30%; /* Wider button for mobile */
+      font-size: 20px; /* Smaller font size for mobile */
+    }
+
+    /* Adjust team name container for mobile */
+    .team-name-container {
+      width: 25%; /* Smaller width for team name container */
+      margin-left: 10px; /* Further reduced margin for mobile */
+    }
+
+    .team-box {
+      padding: 10px; /* Further reduced padding for mobile */
+      margin-bottom: 15px; /* Further reduced margin for mobile */
+    }
+
+    .team-name {
+      font-size: 18px; /* Smaller font size for mobile */
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    .question {
+      font-size: 18px; /* Even smaller font size for very small screens */
+    }
+
+    .next-btn {
+      width: 40%; /* Wider button for very small screens */
+      font-size: 18px; /* Even smaller font size for very small screens */
+    }
+
+    .team-name {
+      font-size: 16px; /* Even smaller font size for very small screens */
+    }
+  }
+</style>
 </head>
 
 <body>
