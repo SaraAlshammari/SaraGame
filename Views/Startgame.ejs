@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Start Game</title>
   <style>
-    /* Basic styling */
-    body {
+   /* Basic styling */
+body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
@@ -22,8 +22,8 @@
   background-attachment: fixed; /* Keeps the background image fixed while scrolling */
 }
 
-    /* Transparent Navigation menu */
-    .navbar {
+/* Transparent Navigation menu */
+.navbar {
   display: flex;
   align-items: center;
   justify-content: space-between; /* Space between left (logo) and center (menu) */
@@ -38,7 +38,7 @@
 
 .navbar a {
   text-decoration: none;
-  font-size: 18px;
+  font-size: 22px;
   padding: 15px 30px;
   margin: 0 15px;
   color: black;
@@ -75,13 +75,14 @@
   justify-content: center; /* Align links in the center */
   flex-grow: 1; /* Ensure they take up remaining space */
 }
-    /* Spacer */
-    .spacer {
-      height: 100px;
-    }
 
-    /* Pink Text after Menu */
-    .pink-text {
+/* Spacer */
+.spacer {
+  height: 100px;
+}
+
+/* Pink Text after Menu */
+.pink-text {
   background-color: #18375d; /* Dark blue background */
   color: #f4f4f4; /* Light text for contrast */
   font-size: 18px; /* Font size for readability */
@@ -109,52 +110,52 @@
   text-decoration: underline; /* Underline effect on hover */
 }
 
-    /* Category Cards Section */
-    .categories-container {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px; /* Reduced gap between cards */
-      margin-top: 30px;
-      width: 100%;
-      max-width: 1200px; /* Maximum width for better control */
-    }
+/* Category Cards Section */
+.categories-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px; /* Reduced gap between cards */
+  margin-top: 30px;
+  width: 100%;
+  max-width: 1200px; /* Maximum width for better control */
+}
 
-    .category-card {
-      background: rgba(255, 255, 255, 0.3);
-      width: 28%; /* Smaller card width for a more compact design */
-      height: 270px; /* Reduced card height */
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
+.category-card {
+  background: rgba(255, 255, 255, 0.3);
+  width: 28%; /* Smaller card width for a more compact design */
+  height: 270px; /* Reduced card height */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
-    .category-card:hover {
-      transform: scale(1.05);
-    }
+.category-card:hover {
+  transform: scale(1.05);
+}
 
-    .category-card.selected {
-      background-color: #efb7ce; /* Highlight color when selected */
-    }
+.category-card.selected {
+  background-color: #efb7ce; /* Highlight color when selected */
+}
 
-    .category-card img {
-      width: 100%;
-      height: 80%; /* Adjust image height for a smaller card */
-      border-radius: 15px 15px 0 0;
-      object-fit: cover;
-    }
+.category-card img {
+  width: 100%;
+  height: 80%; /* Adjust image height for a smaller card */
+  border-radius: 15px 15px 0 0;
+  object-fit: cover;
+}
 
-    .category-card-name {
-      padding: 5px; /* Reduced padding */
-      font-size: 16px; /* Smaller text size */
-      font-weight: bold;
-      color: rgb(7, 7, 63);
-    }
+.category-card-name {
+  padding: 5px; /* Reduced padding */
+  font-size: 16px; /* Smaller text size */
+  font-weight: bold;
+  color: rgb(7, 7, 63);
+}
 
-    /* About Us section */
-    #aboutus {
+/* About Us section */
+#aboutus {
   padding: 3px; /* Reduced padding for smaller height */
   background-color: #f4f4f4; /* Light background color */
   color: #333; /* Dark text for visibility */
@@ -190,10 +191,10 @@
 #aboutus a:hover {
   text-decoration: underline; /* Hover effect for the email link */
 }
-    /* Proceed Button */
-    /* Base Button Styles */
-    button {
-      padding: 15px 30px; /* Larger padding for bigger buttons */
+
+/* Proceed Button */
+button {
+  padding: 15px 30px; /* Larger padding for bigger buttons */
   font-size: 27px; /* Bigger font size */
   font-weight: bold; /* Bold text */
   border: none;
@@ -206,7 +207,6 @@
 
 /* Primary Button (Light Blue-Gray) */
 .button-primary {
-  
   background-color: #70a1b9; /* Light blue-gray */
 }
 
@@ -228,10 +228,69 @@
 }
 
 #proceedButton {
-      display: none;
-      margin-bottom: 30px;
-    }
+  display: none;
+  margin-bottom: 30px;
+}
 
+/* Mobile responsiveness */
+@media only screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    display: block;
+    text-align: left;
+  }
+
+  .category-card {
+    width: 45%; /* 2 cards per row */
+    height: 200px; /* Adjusted height for mobile */
+  }
+
+  .category-card-name {
+    font-size: 14px; /* Smaller text size on mobile */
+  }
+
+  #aboutus {
+    width: 90%; /* Make the About Us section more responsive */
+  }
+
+  button {
+    font-size: 20px; /* Smaller button font size for mobile */
+    padding: 10px 20px; /* Adjust button padding for mobile */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .navbar a {
+    font-size: 18px; /* Smaller font size for mobile */
+    padding: 10px 20px;
+  }
+
+  .category-card {
+    width: 100%; /* One card per row */
+    height: 180px; /* Further reduced height */
+  }
+
+  .category-card-name {
+    font-size: 12px; /* Even smaller text size on very small screens */
+  }
+
+  #aboutus h2 {
+    font-size: 18px; /* Smaller heading font size for smaller screens */
+  }
+
+  #aboutus p {
+    font-size: 12px; /* Smaller text for better readability */
+  }
+
+  button {
+    font-size: 18px; /* Even smaller font size for buttons on very small screens */
+    padding: 8px 16px;
+  }
+}
 
 
   </style>
