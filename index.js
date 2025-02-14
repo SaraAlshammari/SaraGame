@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import cors from 'cors';
-app.use(cors()); // This will allow all domains, adjust as needed
+
 // Define a common schema for all collections
 const commonSchema = new mongoose.Schema({
   Question: { type: String, required: true },
@@ -59,7 +59,7 @@ app.get('/start4', (req, res) => {
 app.get('/start5', (req, res) => {
   res.render("start5");
 });
-
+app.use(cors());
 app.get('/api/questions', async (req, res) => {
   const { category, level } = req.query;
 
