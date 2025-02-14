@@ -5,210 +5,202 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>حلّها!</title>
   <style>
-    /* Basic styling */
-    body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-image: url('public/img/4.png'); /* Background image for the entire page */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: scroll; /* Enable vertical scrolling */
-  background-attachment: fixed; /* Keeps the background image fixed while scrolling */
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Space between left (logo) and center (menu) */
-  padding: 20px 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: transparent; /* Fully transparent background */
-  z-index: 100;
-}
-
-.navbar a {
-  text-decoration: none;
-  font-size: 18px;
-  padding: 15px 30px;
-  margin: 0 15px;
-  color: black;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.navbar a:hover {
-  color: #efb7ce; /* Change text color to pink on hover */
-}
-
-/* Logo and Website Name on the Left */
-.logo-container {
-  display: flex;
-  align-items: center;
-  margin-right: auto; /* Align logo and name to the far left */
-}
-
-.logo {
-  height: 50px; /* Adjust the size of the logo */
-  margin-right: 5px; /* Space between logo and text */
-}
-
-.website-name {
-  font-size: 30px; /* Adjust font size */
-  font-weight: bold; /* Make it bold */
-  color: #18375d; /* Blue color for the website name */
-  direction: rtl; /* Proper rendering for Arabic text */
-}
-
-/* Center the Navigation Links */
-.nav-links {
-  display: flex;
-  justify-content: center; /* Align links in the center */
-  flex-grow: 1; /* Ensure they take up remaining space */
-}
-
-    /* Spacing after the menu */
-    .spacer {
-      height: 70px; /* Increased space after menu */
-    }
-
-    /* Game Image */
-    .game-image {
-      width: 80%; /* Increased width of the image */
-      max-width: 800px; /* Maximum width */
-      height: auto;
-      margin-bottom: 40px; /* Space after the image */
-      border-radius: 15px; /* Add rounded corners */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
-    }
-
-    /* About Us section */
-    #aboutus {
-  padding: 3px; /* Reduced padding for smaller height */
-  background-color: #f4f4f4; /* Light background color */
-  color: #333; /* Dark text for visibility */
-  text-align: center; /* Center align text */
-  margin-top: auto;
-  width: 100%;
-  max-width: 1200px; /* Max width for content */
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 50% 50% 0 0; /* Top half circle effect */
-  position: relative;
-  overflow: hidden; /* Hide overflow for clean edges */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
-}
-
-#aboutus h2 {
-  font-size: 22px; /* Smaller heading font size */
-  color: #18375d; /* Color for headings */
-  margin-bottom: 10px; /* Reduced spacing */
-}
-
-#aboutus p {
-  font-size: 14px; /* Smaller font size for paragraphs */
-  line-height: 1.4; /* Reduced line height */
-  margin-bottom: 8px; /* Reduced spacing between paragraphs */
-}
-
-#aboutus a {
-  color: #18375d; /* Dark blue color for email link */
-  text-decoration: none;
-}
-
-#aboutus a:hover {
-  text-decoration: underline; /* Hover effect for the email link */
-}
-
-.card {
-  width: 100%;
-  max-width: 1200px; /* Maximum width of the card */
-  margin: 40px auto; /* Center the card with margin */
-  background-color: #f4f4f4; /* Light background color for the card */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  overflow: hidden; /* Ensure no content overflows the rounded corners */
-}
-
-.card-content {
-  display: flex; /* Flexbox for side-by-side layout */
-  align-items: center; /* Vertically center the items */
-  padding: 20px;
-}
-
-.card-image {
-  flex: 1; /* Image takes up half the space */
-  max-width: 50%; /* Set the maximum width of the image */
-}
-
-.card-image img {
-  width: 100%; /* Ensure the image fills the container */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 10px; /* Rounded corners for the image */
-}
-
-.card-text {
-  flex: 2; /* Text will take up twice the space of the image */
-  padding-left: 20px; /* Space between image and text */
-}
-
-.card-text h3 {
-  text-align: right;
-  font-size: 25px; /* Larger font size for the heading */
-  color: #18375d; /* Heading color */
-  margin-bottom: 10px; /* Space between heading and text */
-}
-
-.card-text p {
-  font-size: 20px; /* Font size for the description */
-  color: #333; /* Dark text color for readability */
-  line-height: 1.6; /* Increase line height for better text spacing */
-}
-
-/* Container for the game description */
-.game-description {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.game-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 25px;
-}
-
-.game-text h3 {
-  font-size: 25px;
-  margin-bottom: 20px;
-  color: #2c3e50;
-}
-
-.game-text p {
-  font-size: 17px;
-  line-height: 1.8;
-  color: #34495e;
-  margin-bottom: 15px;
-}
-
-.game-text strong {
-  color: #e74c3c; /* لون مميز للكلمات المفتاحية */
-}
-
-  </style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('public/img/4.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    background-attachment: fixed;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    z-index: 100;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    font-size: 18px;
+    padding: 15px 30px;
+    margin: 0 15px;
+    color: black;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar a:hover {
+    color: #efb7ce;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+  }
+  
+  .logo {
+    height: 50px;
+    margin-right: 5px;
+  }
+  
+  .website-name {
+    font-size: 30px;
+    font-weight: bold;
+    color: #18375d;
+    direction: rtl;
+  }
+  
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  
+  .spacer {
+    height: 70px;
+  }
+  
+  .game-image {
+    width: 80%;
+    max-width: 800px;
+    height: auto;
+    margin-bottom: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  #aboutus {
+    padding: 3px;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50% 50% 0 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  #aboutus h2 {
+    font-size: 22px;
+    color: #18375d;
+    margin-bottom: 10px;
+  }
+  
+  #aboutus p {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  
+  #aboutus a {
+    color: #18375d;
+    text-decoration: none;
+  }
+  
+  #aboutus a:hover {
+    text-decoration: underline;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .card-content {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .card-image {
+    flex: 1;
+    max-width: 50%;
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .card-text {
+    flex: 2;
+    padding-left: 20px;
+  }
+  
+  .card-text h3 {
+    text-align: right;
+    font-size: 25px;
+    color: #18375d;
+    margin-bottom: 10px;
+  }
+  
+  .card-text p {
+    font-size: 20px;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .game-description {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .game-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 25px;
+  }
+  
+  .game-text h3 {
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  .game-text p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #34495e;
+    margin-bottom: 15px;
+  }
+  
+  .game-text strong {
+    color: #e74c3c;
+  }
+</style>
 </head>
 <body>
 
