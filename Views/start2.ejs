@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Team Setup</title>
   <style>
-     body {
+    /* Basic styling */
+body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
@@ -74,6 +75,36 @@
   flex-grow: 1; /* Ensure they take up remaining space */
 }
 
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack the logo and menu vertically on small screens */
+    text-align: center; /* Center align the text */
+    padding: 10px 0;
+  }
+
+  .nav-links {
+    flex-direction: column; /* Stack the nav links vertically */
+    width: 100%; /* Make nav links take full width */
+    padding-top: 10px;
+  }
+
+  .navbar a {
+    padding: 10px 20px; /* Smaller padding for mobile */
+    margin: 5px 0; /* Reduce margin for mobile */
+    font-size: 16px; /* Smaller font size for mobile */
+  }
+
+  .logo {
+    height: 40px; /* Reduce logo size on mobile */
+  }
+
+  .website-name {
+    font-size: 24px; /* Smaller website name size on mobile */
+  }
+}
+
+/* Team setup styling */
 .team-setup {
   background-color: #f9f9f9;
   padding: 30px;
@@ -83,12 +114,6 @@
   max-width: 400px;
   text-align: center;
   margin-top: 80px;
-}
-
-h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #444;
 }
 
 /* Labels */
@@ -243,90 +268,6 @@ h2 {
 #proceedButton:hover {
   background-color: #a8b6c7; /* Slightly darker shade */
   transform: scale(1.05); /* Slight zoom effect */
-}
-
-/* Responsive Design for Mobile */
-@media (max-width: 768px) {
-  .navbar a {
-    font-size: 16px;
-    padding: 12px 25px;
-  }
-
-  .website-name {
-    font-size: 24px; /* Smaller font size for mobile */
-  }
-
-  .team-setup {
-    padding: 20px;
-    max-width: 100%;
-  }
-
-  .team-name-label,
-  .team-name-input,
-  .players-input {
-    font-size: 14px;
-  }
-
-  .btn-proceed,
-  .btn-player {
-    font-size: 16px;
-    padding: 10px;
-  }
-
-  #aboutus h2 {
-    font-size: 18px;
-  }
-
-  #aboutus p {
-    font-size: 12px;
-  }
-
-  .button-secondary {
-    font-size: 14px;
-  }
-
-  #proceedButton {
-    font-size: 16px;
-  }
-}
-
-/* Additional Media Query for Very Small Screens */
-@media (max-width: 480px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .team-setup {
-    padding: 15px;
-  }
-
-  .team-name-label,
-  .team-name-input {
-    font-size: 12px;
-  }
-
-  .btn-proceed {
-    font-size: 14px;
-  }
-
-  .button-secondary {
-    font-size: 12px;
-  }
-
-  #aboutus h2 {
-    font-size: 16px;
-  }
-
-  #aboutus p {
-    font-size: 10px;
-  }
 }
   </style>
 </head>
