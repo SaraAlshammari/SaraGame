@@ -4,213 +4,299 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game Question</title>
-  <style>
-    /* Prevent scrolling on the entire page */
-    body, html {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      overflow: hidden; /* Prevent scrolling */
-      background-image: url('public/img/6.png'); /* Background image for the entire page */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat; /* Make the background stay in place when scrolling */
+ <style>
+  /* Prevent scrolling on the entire page */
+  body,
+  html {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrolling */
+    background-image: url('public/img/6.png'); /* Background image for the entire page */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Make the background stay in place when scrolling */
+  }
+
+  /* Navbar Styling */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent; /* Fully transparent */
+    padding: 10px 20px;
+    position: fixed; /* Fixed at the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 80px; /* Fixed height for navbar */
+  }
+
+  /* Logo and Website Name */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo {
+    width: 80px;
+    height: 70px;
+  }
+
+  .website-name {
+    font-size: 29px;
+    font-weight: bold;
+    color: #000; /* Black text */
+  }
+
+  /* Exit Game Button */
+  .exit-game {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+
+  .exit-game:hover {
+    opacity: 0.8;
+  }
+
+  .exit-text {
+    font-size: 22px;
+    color: #000; /* Black text */
+  }
+
+  .exit-game a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+    display: flex; /* Ensure flex layout works */
+    align-items: center; /* Align items vertically */
+    gap: 8px; /* Add spacing between text and icon */
+  }
+
+  .exit-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Main Content Section */
+  .main-container {
+    display: flex;
+    flex-direction: row; /* Align children side by side */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-top: 80px; /* Add margin to account for fixed navbar */
+    height: calc(100vh - 80px); /* Adjust height to account for navbar */
+    width: 100%; /* Take up the full width */
+    gap: 20px; /* Add spacing between question card and team names */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  /* Question Card */
+  .question-card {
+    background-color: rgba(255, 255, 255, 0.959); /* Semi-transparent white background */
+    width: 70%; /* Larger width for question card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  /* Question Styling */
+  .question {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Reveal Answer Button Styling */
+  .reveal-answer-btn {
+    padding: 10px 20px;
+    width: 20%;
+    font-size: 25px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    color: #ffffff; /* Dark text for contrast */
+    background-color: #86a4c9;
+  }
+
+  .reveal-answer-btn:hover {
+    background-color: #5c83b3; /* Slightly darker shade */
+    transform: scale(1.05);
+  }
+
+  /* Right Column for Team Names and Icon */
+  .team-name-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align to the top */
+    align-items: center;
+    width: 20%; /* Smaller width for team name container */
+    background-color: transparent; /* Make the container transparent */
+    border-radius: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  /* Team Box */
+  .team-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for team boxes */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow to team boxes */
+    padding: 15px;
+    text-align: center;
+  }
+
+  /* Team Name */
+  .team-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  /* Double Icon */
+  .double-icon {
+    width: 40px; /* Resized icon */
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease; /* For smooth gray effect */
+  }
+
+  /* Icon clicked (gray effect) */
+  .double-icon.clicked {
+    filter: grayscale(100%);
+    cursor: not-allowed; /* Disable further clicks */
+  }
+
+  /* Tooltip text */
+  .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position the tooltip above the icon */
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .double-icon:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    /* Adjust navbar for mobile */
+    .navbar {
+      padding: 10px;
     }
- /* Navbar Styling */
- .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: transparent; /* Fully transparent */
-  padding: 10px 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
 
-/* Logo and Website Name */
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+    .logo {
+      width: 60px;
+      height: 50px;
+    }
 
-.logo {
-  width: 80px;
-  height: 70px;
-}
+    .website-name {
+      font-size: 24px;
+    }
 
-.website-name {
-  font-size: 29px;
-  font-weight: bold;
-  color: #000; /* Black text */
-}
+    .exit-text {
+      font-size: 18px;
+    }
 
-/* Exit Game Button */
-.exit-game {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-}
+    .exit-icon {
+      width: 30px;
+      height: 30px;
+    }
 
-.exit-game:hover {
-  opacity: 0.8;
-}
+    /* Adjust main container for mobile */
+    .main-container {
+      margin-top: 80px; /* Add margin to account for fixed navbar */
+      height: calc(100vh - 80px); /* Adjust height to account for navbar */
+      gap: 10px; /* Reduce gap between elements */
+      padding: 10px;
+    }
 
-.exit-text {
-  font-size: 22px;
-  color: #000; /* Black text */
-}
+    /* Adjust question card for mobile */
+    .question-card {
+      width: 70%; /* Keep larger width for question card */
+      padding: 15px;
+    }
 
-.exit-game a {
-  text-decoration: none; /* Remove underline */
-  color: inherit; /* Inherit text color */
-  display: flex; /* Ensure flex layout works */
-  align-items: center; /* Align items vertically */
-  gap: 8px; /* Add spacing between text and icon */
-}
-.exit-icon {
-  width: 40px;
-  height: 40px;
-}
+    .question {
+      font-size: 20px; /* Smaller font size for mobile */
+    }
 
-    /* Main Content Section */
-    /* Main Content Section */
-/* Main Content Section */
-.main-container {
-  display: flex;
-  flex-direction: row; /* Align children side by side */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Take up the full viewport height */
-  width: 100%; /* Take up the full width */
-  gap: 20px; /* Add spacing between question card and team names */
-  padding: 20px;
-  box-sizing: border-box;
-}
+    .reveal-answer-btn {
+      width: 30%; /* Wider button for mobile */
+      font-size: 20px; /* Smaller font size for mobile */
+    }
 
-/* Question Card */
-.question-card {
-  background-color: rgba(255, 255, 255, 0.959); /* Semi-transparent white background */
-  width: 60%; /* Adjust as needed */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  box-sizing: border-box;
-}
+    /* Adjust team name container for mobile */
+    .team-name-container {
+      width: 25%; /* Smaller width for team name container */
+      padding: 10px;
+    }
 
-/* Question Styling */
-.question {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 20px;
-}
+    .team-box {
+      margin-bottom: 20px; /* Reduce margin for mobile */
+    }
 
-/* Reveal Answer Button Styling */
-.reveal-answer-btn {
-  padding: 10px 20px;
-  width: 20%;
-  font-size: 25px;
-  border: none;
-  border-radius: 9px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  color: #ffffff; /* Dark text for contrast */
-  background-color: #86a4c9;
-}
-
-.reveal-answer-btn:hover {
-  background-color: #5c83b3; /* Slightly darker shade */
-  transform: scale(1.05);
-}
-
-/* Right Column for Team Names and Icon */
-.team-name-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Align to the top */
-  align-items: center;
-  width: 300px;
-  background-color: transparent; /* Make the container transparent */
-  border-radius: 10px;
-  padding: 15px;
-  box-sizing: border-box;
-}
-
-/* Team Box */
-.team-box {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for team boxes */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow to team boxes */
-  padding: 15px;
-  text-align: center;
-}
-
-
-    /* Team Name */
     .team-name {
-      font-size: 22px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 10px;
+      font-size: 18px; /* Smaller font size for mobile */
     }
 
-    /* Double Icon */
     .double-icon {
-      width: 40px; /* Resized icon */
-      height: 40px;
-      cursor: pointer;
-      transition: transform 0.3s ease, filter 0.3s ease; /* For smooth gray effect */
+      width: 30px; /* Smaller icon for mobile */
+      height: 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    .question {
+      font-size: 18px; /* Even smaller font size for very small screens */
     }
 
-    /* Icon clicked (gray effect) */
-    .double-icon.clicked {
-      filter: grayscale(100%);
-      cursor: not-allowed; /* Disable further clicks */
+    .reveal-answer-btn {
+      width: 40%; /* Wider button for very small screens */
+      font-size: 18px; /* Even smaller font size for very small screens */
     }
 
-    /* Tooltip text */
-    .tooltip {
-      visibility: hidden;
-      width: 120px;
-      background-color: black;
-      color: #fff;
-      text-align: center;
-      border-radius: 5px;
-      padding: 5px 0;
-      position: absolute;
-      z-index: 1;
-      bottom: 125%; /* Position the tooltip above the icon */
-      left: 50%;
-      margin-left: -60px;
-      opacity: 0;
-      transition: opacity 0.3s;
+    .team-name {
+      font-size: 16px; /* Even smaller font size for very small screens */
     }
-
-    .double-icon:hover .tooltip {
-      visibility: visible;
-      opacity: 1;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
