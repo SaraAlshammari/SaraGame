@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import cors from 'cors';
 import favicon from 'serve-favicon';
-
+import path from 'path';
 // Define a common schema for all collections
 const commonSchema = new mongoose.Schema({
   Question: { type: String, required: true },
@@ -27,7 +27,7 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = 10000;
 const dbURI = "mongodb+srv://sara:Sara1234@cluster0.hqsjf3p.mongodb.net/SaraGame?retryWrites=true&w=majority&appName=Cluster0";
-
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(__dirname, {
   extensions: ["html", "htm", "gif", "png"]
 }));
@@ -35,7 +35,6 @@ app.use(express.static('public'));
 app.use('img', express.static(__dirname + "/img"));
 // Serve the favicon specifically
 
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 // Set views
 app.set('views', './Views');
 app.set('view engine', 'ejs');
