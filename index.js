@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import cors from 'cors';
+import favicon from 'serve-favicon';
 
 // Define a common schema for all collections
 const commonSchema = new mongoose.Schema({
@@ -33,7 +34,7 @@ app.use(express.static(__dirname, {
 app.use(express.static('public'));
 app.use('img', express.static(__dirname + "/img"));
 // Serve the favicon specifically
-const favicon = require('serve-favicon');
+
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 // Set views
 app.set('views', './Views');
