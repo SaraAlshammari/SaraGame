@@ -5,78 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Games</title>
   <style>
-    /* Basic styling */
+    /* Basic styling (unchanged for big screens) */
     body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-image: url('public/img/4.png'); /* Background image for the entire page */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: scroll; /* Enable vertical scrolling */
-  background-attachment: fixed; /* Keeps the background image fixed while scrolling */
-}
-
-    /* Navigation menu */
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('public/img/4.png'); /* Background image for the entire page */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: scroll; /* Enable vertical scrolling */
+      background-attachment: fixed; /* Keeps the background image fixed while scrolling */
+    }
+  
+    /* Navigation menu (unchanged for big screens) */
     .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Space between left (logo) and center (menu) */
-  padding: 20px 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: transparent; /* Fully transparent background */
-  z-index: 100;
-}
-
-.navbar a {
-  text-decoration: none;
-  font-size: 18px;
-  padding: 15px 30px;
-  margin: 0 15px;
-  color: black;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.navbar a:hover {
-  color: #efb7ce; /* Change text color to pink on hover */
-}
-
-/* Logo and Website Name on the Left */
-.logo-container {
-  display: flex;
-  align-items: center;
-  margin-right: auto; /* Align logo and name to the far left */
-}
-
-.logo {
-  height: 50px; /* Adjust the size of the logo */
-  margin-right: 5px; /* Space between logo and text */
-}
-
-.website-name {
-  font-size: 30px; /* Adjust font size */
-  font-weight: bold; /* Make it bold */
-  color: #18375d; /* Blue color for the website name */
-  direction: rtl; /* Proper rendering for Arabic text */
-}
-
-/* Center the Navigation Links */
-.nav-links {
-  display: flex;
-  justify-content: center; /* Align links in the center */
-  flex-grow: 1; /* Ensure they take up remaining space */
-}
-
-    /* Centered text for main section */
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* Space between left (logo) and center (menu) */
+      padding: 20px 5%; /* Add padding to the sides */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: transparent; /* Fully transparent background */
+      z-index: 100;
+      box-sizing: border-box; /* Ensure padding is included in width */
+    }
+  
+    .navbar a {
+      text-decoration: none;
+      font-size: 18px;
+      padding: 10px 20px; /* Reduced padding for better spacing */
+      margin: 0 10px; /* Reduced margin */
+      color: black;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+  
+    .navbar a:hover {
+      color: #efb7ce; /* Change text color to pink on hover */
+    }
+  
+    /* Logo and Website Name on the Left (unchanged for big screens) */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      margin-right: auto; /* Align logo and name to the far left */
+    }
+  
+    .logo {
+      height: 50px; /* Adjust the size of the logo */
+      margin-right: 10px; /* Space between logo and text */
+    }
+  
+    .website-name {
+      font-size: 24px; /* Adjusted font size */
+      font-weight: bold; /* Make it bold */
+      color: #18375d; /* Blue color for the website name */
+      direction: rtl; /* Proper rendering for Arabic text */
+    }
+  
+    /* Center the Navigation Links (unchanged for big screens) */
+    .nav-links {
+      display: flex;
+      justify-content: center; /* Align links in the center */
+      flex-grow: 1; /* Ensure they take up remaining space */
+    }
+  
+    /* Centered text for main section (unchanged for big screens) */
     .soon-message {
       display: flex;
       justify-content: center;
@@ -89,44 +90,93 @@
       text-transform: uppercase;
       text-align: center;
     }
-
-    /* About Us section */
+  
+    /* About Us section (unchanged for big screens) */
     #aboutus {
-  padding: 3px; /* Reduced padding for smaller height */
-  background-color: #f4f4f4; /* Light background color */
-  color: #333; /* Dark text for visibility */
-  text-align: center; /* Center align text */
-  margin-top: auto;
-  width: 100%;
-  max-width: 1200px; /* Max width for content */
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 50% 50% 0 0; /* Top half circle effect */
-  position: relative;
-  overflow: hidden; /* Hide overflow for clean edges */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
-}
-
-#aboutus h2 {
-  font-size: 22px; /* Smaller heading font size */
-  color: #18375d; /* Color for headings */
-  margin-bottom: 10px; /* Reduced spacing */
-}
-
-#aboutus p {
-  font-size: 14px; /* Smaller font size for paragraphs */
-  line-height: 1.4; /* Reduced line height */
-  margin-bottom: 8px; /* Reduced spacing between paragraphs */
-}
-
-#aboutus a {
-  color: #18375d; /* Dark blue color for email link */
-  text-decoration: none;
-}
-
-#aboutus a:hover {
-  text-decoration: underline; /* Hover effect for the email link */
-}
+      padding: 20px 10px; /* Adjusted padding for smaller screens */
+      background-color: #f4f4f4; /* Light background color */
+      color: #333; /* Dark text for visibility */
+      text-align: center; /* Center align text */
+      margin-top: auto;
+      width: 100%;
+      max-width: 1200px; /* Max width for content */
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 50% 50% 0 0; /* Top half circle effect */
+      position: relative;
+      overflow: hidden; /* Hide overflow for clean edges */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
+    }
+  
+    #aboutus h2 {
+      font-size: 22px; /* Smaller heading font size */
+      color: #18375d; /* Color for headings */
+      margin-bottom: 10px; /* Reduced spacing */
+    }
+  
+    #aboutus p {
+      font-size: 14px; /* Smaller font size for paragraphs */
+      line-height: 1.4; /* Reduced line height */
+      margin-bottom: 8px; /* Reduced spacing between paragraphs */
+    }
+  
+    #aboutus a {
+      color: #18375d; /* Dark blue color for email link */
+      text-decoration: none;
+    }
+  
+    #aboutus a:hover {
+      text-decoration: underline; /* Hover effect for the email link */
+    }
+  
+    /* Mobile responsiveness (only for small screens) */
+    @media (max-width: 768px) {
+      /* Navbar adjustments for mobile */
+      .navbar {
+        padding: 10px 5%; /* Reduced padding for mobile */
+      }
+  
+      .navbar a {
+        font-size: 14px; /* Smaller font size for mobile */
+        padding: 8px 12px; /* Reduced padding for mobile */
+        margin: 0 5px; /* Reduced margin for mobile */
+      }
+  
+      .logo {
+        height: 40px; /* Smaller logo for mobile */
+      }
+  
+      .website-name {
+        font-size: 20px; /* Smaller website name size on mobile */
+      }
+  
+      /* Centered text for main section adjustments for mobile */
+      .soon-message {
+        font-size: 48px; /* Smaller font size for mobile */
+      }
+    }
+  
+    @media (max-width: 480px) {
+      /* Navbar adjustments for very small screens */
+      .navbar a {
+        font-size: 12px; /* Even smaller font size for very small screens */
+        padding: 6px 10px; /* Further reduced padding */
+        margin: 0 3px; /* Further reduced margin */
+      }
+  
+      .logo {
+        height: 35px; /* Even smaller logo for very small screens */
+      }
+  
+      .website-name {
+        font-size: 18px; /* Even smaller font size for very small screens */
+      }
+  
+      /* Centered text for main section adjustments for very small screens */
+      .soon-message {
+        font-size: 36px; /* Even smaller font size for very small screens */
+      }
+    }
   </style>
 </head>
 <body>
