@@ -61,6 +61,9 @@ app.get('/start4', (req, res) => {
 app.get('/start5', (req, res) => {
   res.render("start5");
 });
+app.get('/Privacy', (req, res) => {
+  res.render("Privacy");
+});
 
 app.use(cors());
 app.get('/api/questions', async (req, res) => {
